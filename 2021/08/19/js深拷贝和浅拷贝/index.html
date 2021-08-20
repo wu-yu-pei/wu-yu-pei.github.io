@@ -59,6 +59,12 @@
 			
 				<li><a href="/">主页</a></li>
 	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+				<li><a href="/categories">分类</a></li>
+	        
+				<li><a href="/tags">标签</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -107,6 +113,12 @@
 			
 				
 			
+				
+			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -118,10 +130,16 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
+		        
+					<li style="width: 25%"><a href="/archives">所有文章</a></li>
+		        
+					<li style="width: 25%"><a href="/categories">分类</a></li>
+		        
+					<li style="width: 25%"><a href="/tags">标签</a></li>
 		        
 				</ul>
 			</nav>
@@ -155,7 +173,7 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
+      <!-- 
         <h3 id="一-什么是深拷贝和浅拷贝"><a href="#一-什么是深拷贝和浅拷贝" class="headerlink" title="一.什么是深拷贝和浅拷贝"></a>一.什么是深拷贝和浅拷贝</h3><ul>
 <li>浅拷贝:对内存地址的复制，让目标对象指针和源对象指向同一片内存空间。注意：当内存销毁的时候，只想对象的指针，必须重新定义，才能够使用</li>
 <li>深拷贝:深拷贝是指，拷贝对象的具体内容，二内存地址是自主分配的，拷贝结束之后俩个对象虽然存的值是一样的，但是内存地址不一样，俩个对象页互相不影响，互不干涉</li>
@@ -194,7 +212,27 @@
           </div>
           </a>
         </div>
+       -->
       
+
+         
+         <h3 id="一-什么是深拷贝和浅拷贝"><a href="#一-什么是深拷贝和浅拷贝" class="headerlink" title="一.什么是深拷贝和浅拷贝"></a>一.什么是深拷贝和浅拷贝</h3><ul>
+<li>浅拷贝:对内存地址的复制，让目标对象指针和源对象指向同一片内存空间。注意：当内存销毁的时候，只想对象的指针，必须重新定义，才能够使用</li>
+<li>深拷贝:深拷贝是指，拷贝对象的具体内容，二内存地址是自主分配的，拷贝结束之后俩个对象虽然存的值是一样的，但是内存地址不一样，俩个对象页互相不影响，互不干涉</li>
+</ul>
+<h3 id="二-实现一个简单浅拷贝"><a href="#二-实现一个简单浅拷贝" class="headerlink" title="二.实现一个简单浅拷贝"></a>二.实现一个简单浅拷贝</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">20</span></span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;小吴&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = obj</span><br></pre></td></tr></table></figure>
+
+<h3 id="三-实现深拷贝"><a href="#三-实现深拷贝" class="headerlink" title="三.实现深拷贝"></a>三.实现深拷贝</h3><h5 id="3-1-JSON-parse-JSON-stringify"><a href="#3-1-JSON-parse-JSON-stringify" class="headerlink" title="3.1 JSON.parse(JSON.stringify())"></a>3.1 JSON.parse(JSON.stringify())</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Person = &#123;</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&#x27;dadaguai&#x27;</span>,</span><br><span class="line">            <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">            <span class="attr">dog</span>: &#123;</span><br><span class="line">                <span class="attr">name</span>: <span class="string">&#x27;xiaobai&#x27;</span>,</span><br><span class="line">                <span class="attr">age</span>: <span class="number">2</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">friends</span>: [&#123; <span class="attr">name</span>: <span class="string">&#x27;xiaoxiaoguai&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;],</span><br><span class="line">            <span class="attr">run</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">&#x27;我会运动&#x27;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="keyword">var</span> copyPerson = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(person))</span><br><span class="line">person.friends[<span class="number">0</span>].name = <span class="string">&#x27;wuyupei&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(Person, copyPerson);<span class="comment">//打印结果中，没有把原来的函数拷贝过来</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-2自定义函数实现深拷贝"><a href="#3-2自定义函数实现深拷贝" class="headerlink" title="3.2自定义函数实现深拷贝"></a>3.2自定义函数实现深拷贝</h5><p>3.2.1 首先实现一个简单的浅拷贝  思路:创建一个新的对象，遍历需要克隆的对象，将需要克隆对象的属性依次添加到新对象上，返回。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params">target</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> cloneTarget = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> target) &#123;</span><br><span class="line">        cloneTarget[key] = target[key]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cloneTarget</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.2.2  对上面clone函数进行改造实现深拷贝</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params">target,map = <span class="keyword">new</span> <span class="built_in">Map</span>()</span>) </span>&#123;</span><br><span class="line">           <span class="comment">// 首先判断target是否是一个对象类型  如果不知 直接把原来的值返回出去</span></span><br><span class="line">           <span class="keyword">if</span> (!(<span class="keyword">typeof</span> target === <span class="string">&#x27;object&#x27;</span>)) <span class="keyword">return</span> target</span><br><span class="line"></span><br><span class="line">           <span class="keyword">const</span> cloneTarget = <span class="built_in">Array</span>.isArray(target) ? [] : &#123;&#125;</span><br><span class="line">           <span class="keyword">if</span> (map.get(target)) &#123;</span><br><span class="line">               <span class="keyword">return</span> map.get(target);</span><br><span class="line">           &#125;</span><br><span class="line">           map.set(target, cloneTarget);</span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> target) &#123;</span><br><span class="line">               cloneTarget[key] = clone(target[key],map)</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">return</span> cloneTarget</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">const</span> copyPerson = clone(Person)</span><br><span class="line">       <span class="built_in">console</span>.log(Person, copyPerson);</span><br></pre></td></tr></table></figure>
+
+
+         
+        
     </div>
     <div class="article-info article-info-index">
       
@@ -300,7 +338,7 @@
 
 
   
-  
+
   
 
   
@@ -398,6 +436,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">axios</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
