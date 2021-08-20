@@ -173,73 +173,7 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      <!-- 
-        <h5 id="分两大部分来说一下js有哪些数据类型，并且这两大数据类型有什么区别-如何进行类型判断"><a href="#分两大部分来说一下js有哪些数据类型，并且这两大数据类型有什么区别-如何进行类型判断" class="headerlink" title="分两大部分来说一下js有哪些数据类型，并且这两大数据类型有什么区别,如何进行类型判断"></a>分两大部分来说一下js有哪些数据类型，并且这两大数据类型有什么区别,如何进行类型判断</h5><p>答:</p>
-<ul>
-<li>所有数据类型:String Number  unll undefined Object Symbol Boolean</li>
-</ul>
-<ul>
-<li><p>基本数据类型和引用数据类型</p>
-</li>
-<li><p>区别</p>
-<ol>
-<li>基本数据类型中保存的是准确的值</li>
-<li>复杂数据类型中保存的地址值</li>
-</ol>
-</li>
-<li><p>​</p>
-<ul>
-<li>使用<strong>typeof</strong>来判断</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="keyword">var</span> a = <span class="string">&#x27;张三&#x27;</span></span><br><span class="line">   <span class="keyword">var</span> b = <span class="number">20</span></span><br><span class="line">   <span class="keyword">var</span> c = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>]</span><br><span class="line">   <span class="keyword">var</span> d = <span class="literal">null</span></span><br><span class="line">   <span class="keyword">var</span> e = <span class="literal">undefined</span></span><br><span class="line">   <span class="keyword">var</span> f = &#123;</span><br><span class="line">       a,</span><br><span class="line">       b</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">var</span> h = <span class="literal">true</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> a)  <span class="comment">//string</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> b)  <span class="comment">//number</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> c)  <span class="comment">//object</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> d)  <span class="comment">//object</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> e)  <span class="comment">//undefined</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> f)  <span class="comment">//boject</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> g)  <span class="comment">//function</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> h)  <span class="comment">//boolean</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用<strong>instanceof</strong>来判断</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//instanceof 检测的是原型</span></span><br><span class="line"> 	    <span class="built_in">console</span>.log(a <span class="keyword">instanceof</span> <span class="built_in">String</span>);<span class="comment">//false</span></span><br><span class="line">         <span class="built_in">console</span>.log(b <span class="keyword">instanceof</span> <span class="built_in">Number</span>);<span class="comment">//false</span></span><br><span class="line">         <span class="built_in">console</span>.log(c <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//true</span></span><br><span class="line">         <span class="built_in">console</span>.log(d <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//false</span></span><br><span class="line">         <span class="built_in">console</span>.log(e <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//false</span></span><br><span class="line">         <span class="built_in">console</span>.log(f <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//true</span></span><br><span class="line">         <span class="built_in">console</span>.log(g <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//true</span></span><br><span class="line">         <span class="built_in">console</span>.log(h <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>注:instanceof 只能用来判断两个对象是否属于实例关系， 而不能判断一个对象实例具体属于哪种类型。</strong></p>
-</li>
-</ul>
-<ul>
-<li>使用<strong>toString</strong>来判断</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(a))<span class="comment">//[object String]</span></span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(b))<span class="comment">//[object Number]</span></span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(c))<span class="comment">//[object Array]</span></span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(d))<span class="comment">//[object Null]</span></span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(e))<span class="comment">//[object Undefined]</span></span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(f))<span class="comment">//[object Object]</span></span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(g))<span class="comment">//[object Function]</span></span><br></pre></td></tr></table></figure>
-
-<p>  <strong>原理:</strong></p>
-<p>  1.toString() 是 Object 的原型方法，调用该方法，默认返回当前对象的 [[Class]] 。这是一个内部属性，其格式为 [object Xxx] ，其中 Xxx 就是对象的类型。</p>
-<p>  2.对于 Object 对象，直接调用 toString()  就能返回 [object Object] 。而对于其他对象，则需要通过 call / apply 来调用才能返回正确的类型信息。</p>
-<h3 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a>null和undefined</h3><ul>
-<li>null 表示被赋值过的对象,可以把一个对象赋值为null,故意表示其为空,不应该有值</li>
-<li>undefined 表示缺少值,此处应该有一个值,但是还未定义</li>
-</ul>
-
       
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-       -->
-      
-
          
          <h5 id="分两大部分来说一下js有哪些数据类型，并且这两大数据类型有什么区别-如何进行类型判断"><a href="#分两大部分来说一下js有哪些数据类型，并且这两大数据类型有什么区别-如何进行类型判断" class="headerlink" title="分两大部分来说一下js有哪些数据类型，并且这两大数据类型有什么区别,如何进行类型判断"></a>分两大部分来说一下js有哪些数据类型，并且这两大数据类型有什么区别,如何进行类型判断</h5><p>答:</p>
 <ul>
@@ -282,6 +216,28 @@
 </ul>
 
          
+        
+        
+          <div class="page-reward">
+            <a href="javascript:;" class="page-reward-btn tooltip-top">
+              <div class="tooltip tooltip-east">
+              <span class="tooltip-item">
+                赏
+              </span>
+              <span class="tooltip-content">
+                <span class="tooltip-text">
+                  <span class="tooltip-inner">
+                    <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                    <div class="reward-box">
+                      
+                      
+                    </div>
+                  </span>
+                </span>
+              </span>
+            </div>
+            </a>
+          </div>
         
     </div>
     <div class="article-info article-info-index">
