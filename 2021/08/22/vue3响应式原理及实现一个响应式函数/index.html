@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>javascript的七种数据类型 | 小吴的Blog</title>
+  <title>vue3响应式原理及实现一个响应式函数 | 小吴的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分两大部分来说一下js有哪些数据类型，并且这两大数据类型有什么区别,如何进行类型判断答:  所有数据类型:String Number  unll undefined Object Symbol Boolean   基本数据类型和引用数据类型  区别  基本数据类型中保存的是准确的值 复杂数据类型中保存的地址值">
+  <meta name="description" content="ProxyProxy的监听是针对一个对象的，那么对这个对象的所有操作会进入监听操作，这就完全可以代理所有属性了 下面通过代码进行展示： 定义一个响应式方法reactive">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript的七种数据类型">
-<meta property="og:url" content="http://example.com/2021/08/19/javascript%E7%9A%84%E4%B8%83%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:title" content="vue3响应式原理及实现一个响应式函数">
+<meta property="og:url" content="http://example.com/2021/08/22/vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%93%8D%E5%BA%94%E5%BC%8F%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="小吴的Blog">
-<meta property="og:description" content="分两大部分来说一下js有哪些数据类型，并且这两大数据类型有什么区别,如何进行类型判断答:  所有数据类型:String Number  unll undefined Object Symbol Boolean   基本数据类型和引用数据类型  区别  基本数据类型中保存的是准确的值 复杂数据类型中保存的地址值">
+<meta property="og:description" content="ProxyProxy的监听是针对一个对象的，那么对这个对象的所有操作会进入监听操作，这就完全可以代理所有属性了 下面通过代码进行展示： 定义一个响应式方法reactive">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-08-19T10:07:02.000Z">
-<meta property="article:modified_time" content="2021-08-21T00:53:19.188Z">
+<meta property="article:published_time" content="2021-08-22T03:56:29.000Z">
+<meta property="article:modified_time" content="2021-08-22T04:02:15.611Z">
 <meta property="article:author" content="&lt;h1&gt;Growing&lt;&#x2F;h1&gt;">
-<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="VUE3">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="小吴的Blog" type="application/atom+xml">
@@ -155,20 +155,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-javascript的七种数据类型" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-vue3响应式原理及实现一个响应式函数" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      javascript的七种数据类型
+      vue3响应式原理及实现一个响应式函数
     </h1>
   
 
         
-        <a href="/2021/08/19/javascript%E7%9A%84%E4%B8%83%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2021-08-19T10:07:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-19</time>
+        <a href="/2021/08/22/vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%93%8D%E5%BA%94%E5%BC%8F%E5%87%BD%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2021-08-22T03:56:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-22</time>
 </a>
         
       </header>
@@ -176,49 +176,36 @@
     <div class="article-entry" itemprop="articleBody">
       
          
-         <h5 id="分两大部分来说一下js有哪些数据类型，并且这两大数据类型有什么区别-如何进行类型判断"><a href="#分两大部分来说一下js有哪些数据类型，并且这两大数据类型有什么区别-如何进行类型判断" class="headerlink" title="分两大部分来说一下js有哪些数据类型，并且这两大数据类型有什么区别,如何进行类型判断"></a>分两大部分来说一下js有哪些数据类型，并且这两大数据类型有什么区别,如何进行类型判断</h5><p>答:</p>
-<ul>
-<li>所有数据类型:String Number  unll undefined Object Symbol Boolean</li>
-</ul>
-<ul>
-<li><p>基本数据类型和引用数据类型</p>
-</li>
-<li><p>区别</p>
-<ol>
-<li>基本数据类型中保存的是准确的值</li>
-<li>复杂数据类型中保存的地址值</li>
-</ol>
-</li>
-</ul>
+         <h3 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h3><p><code>Proxy</code>的监听是针对一个对象的，那么对这个对象的所有操作会进入监听操作，这就完全可以代理所有属性了</p>
+<p>下面通过代码进行展示：</p>
+<p>定义一个响应式方法<code>reactive</code></p>
 <span id="more"></span>
 
-<ul>
-<li><p>​</p>
-<ul>
-<li>使用<strong>typeof</strong>来判断</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="keyword">var</span> a = <span class="string">&#x27;张三&#x27;</span></span><br><span class="line">   <span class="keyword">var</span> b = <span class="number">20</span></span><br><span class="line">   <span class="keyword">var</span> c = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>]</span><br><span class="line">   <span class="keyword">var</span> d = <span class="literal">null</span></span><br><span class="line">   <span class="keyword">var</span> e = <span class="literal">undefined</span></span><br><span class="line">   <span class="keyword">var</span> f = &#123;</span><br><span class="line">       a,</span><br><span class="line">       b</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">var</span> h = <span class="literal">true</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> a)  <span class="comment">//string</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> b)  <span class="comment">//number</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> c)  <span class="comment">//object</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> d)  <span class="comment">//object</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> e)  <span class="comment">//undefined</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> f)  <span class="comment">//boject</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> g)  <span class="comment">//function</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">typeof</span> h)  <span class="comment">//boolean</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function reactive(obj) &#123;</span><br><span class="line">    if (typeof obj !== &#x27;object&#x27; &amp;&amp; obj != null) &#123;</span><br><span class="line">        return obj</span><br><span class="line">    &#125;</span><br><span class="line">    // Proxy相当于在对象外层加拦截</span><br><span class="line">    const observed = new Proxy(obj, &#123;</span><br><span class="line">        get(target, key, receiver) &#123;</span><br><span class="line">            const res = Reflect.get(target, key, receiver)</span><br><span class="line">            console.log(`获取$&#123;key&#125;:$&#123;res&#125;`)</span><br><span class="line">            return res</span><br><span class="line">        &#125;,</span><br><span class="line">        set(target, key, value, receiver) &#123;</span><br><span class="line">            const res = Reflect.set(target, key, value, receiver)</span><br><span class="line">            console.log(`设置$&#123;key&#125;:$&#123;value&#125;`)</span><br><span class="line">            return res</span><br><span class="line">        &#125;,</span><br><span class="line">        deleteProperty(target, key) &#123;</span><br><span class="line">            const res = Reflect.deleteProperty(target, key)</span><br><span class="line">            console.log(`删除$&#123;key&#125;:$&#123;res&#125;`)</span><br><span class="line">            return res</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    return observed</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>使用<strong>instanceof</strong>来判断</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//instanceof 检测的是原型</span></span><br><span class="line"> 	    <span class="built_in">console</span>.log(a <span class="keyword">instanceof</span> <span class="built_in">String</span>);<span class="comment">//false</span></span><br><span class="line">         <span class="built_in">console</span>.log(b <span class="keyword">instanceof</span> <span class="built_in">Number</span>);<span class="comment">//false</span></span><br><span class="line">         <span class="built_in">console</span>.log(c <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//true</span></span><br><span class="line">         <span class="built_in">console</span>.log(d <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//false</span></span><br><span class="line">         <span class="built_in">console</span>.log(e <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//false</span></span><br><span class="line">         <span class="built_in">console</span>.log(f <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//true</span></span><br><span class="line">         <span class="built_in">console</span>.log(g <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//true</span></span><br><span class="line">         <span class="built_in">console</span>.log(h <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>测试一下简单数据的操作，发现都能劫持</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const state = reactive(&#123;</span><br><span class="line">    foo: &#x27;foo&#x27;</span><br><span class="line">&#125;)</span><br><span class="line">// 1.获取</span><br><span class="line">state.foo // ok</span><br><span class="line">// 2.设置已存在属性</span><br><span class="line">state.foo = &#x27;fooooooo&#x27; // ok</span><br><span class="line">// 3.设置不存在属性</span><br><span class="line">state.dong = &#x27;dong&#x27; // ok</span><br><span class="line">// 4.删除属性</span><br><span class="line">delete state.dong // ok</span><br></pre></td></tr></table></figure>
 
-<p><strong>注:instanceof 只能用来判断两个对象是否属于实例关系， 而不能判断一个对象实例具体属于哪种类型。</strong></p>
-</li>
-</ul>
-<ul>
-<li>使用<strong>toString</strong>来判断</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(a))<span class="comment">//[object String]</span></span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(b))<span class="comment">//[object Number]</span></span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(c))<span class="comment">//[object Array]</span></span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(d))<span class="comment">//[object Null]</span></span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(e))<span class="comment">//[object Undefined]</span></span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(f))<span class="comment">//[object Object]</span></span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(g))<span class="comment">//[object Function]</span></span><br></pre></td></tr></table></figure>
+<p>再测试嵌套对象情况，这时候发现就不那么 OK 了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const state = reactive(&#123;</span><br><span class="line">    bar: &#123; a: 1 &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 设置嵌套对象属性</span><br><span class="line">state.bar.a = 10 // no ok</span><br></pre></td></tr></table></figure>
 
-<p>  <strong>原理:</strong></p>
-<p>  1.toString() 是 Object 的原型方法，调用该方法，默认返回当前对象的 [[Class]] 。这是一个内部属性，其格式为 [object Xxx] ，其中 Xxx 就是对象的类型。</p>
-<p>  2.对于 Object 对象，直接调用 toString()  就能返回 [object Object] 。而对于其他对象，则需要通过 call / apply 来调用才能返回正确的类型信息。</p>
-<h3 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a>null和undefined</h3><ul>
-<li>null 表示被赋值过的对象,可以把一个对象赋值为null,故意表示其为空,不应该有值</li>
-<li>undefined 表示缺少值,此处应该有一个值,但是还未定义</li>
-</ul>
+<p>如果要解决，需要在<code>get</code>之上再进行一层代理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function reactive(obj) &#123;</span><br><span class="line">    if (typeof obj !== &#x27;object&#x27; &amp;&amp; obj != null) &#123;</span><br><span class="line">        return obj</span><br><span class="line">    &#125;</span><br><span class="line">    // Proxy相当于在对象外层加拦截</span><br><span class="line">    const observed = new Proxy(obj, &#123;</span><br><span class="line">        get(target, key, receiver) &#123;</span><br><span class="line">            const res = Reflect.get(target, key, receiver)</span><br><span class="line">            console.log(`获取$&#123;key&#125;:$&#123;res&#125;`)</span><br><span class="line">            return isObject(res) ? reactive(res) : res</span><br><span class="line">        &#125;,</span><br><span class="line">    return observed</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h2><p><code>Object.defineProperty</code>只能遍历对象属性进行劫持</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function observe(obj) &#123;</span><br><span class="line">    if (typeof obj !== &#x27;object&#x27; || obj == null) &#123;</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    Object.keys(obj).forEach(key =&gt; &#123;</span><br><span class="line">        defineReactive(obj, key, obj[key])</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Proxy</code>直接可以劫持整个对象，并返回一个新对象，我们可以只操作新的对象达到响应式目的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function reactive(obj) &#123;</span><br><span class="line">    if (typeof obj !== &#x27;object&#x27; &amp;&amp; obj != null) &#123;</span><br><span class="line">        return obj</span><br><span class="line">    &#125;</span><br><span class="line">    // Proxy相当于在对象外层加拦截</span><br><span class="line">    const observed = new Proxy(obj, &#123;</span><br><span class="line">        get(target, key, receiver) &#123;</span><br><span class="line">            const res = Reflect.get(target, key, receiver)</span><br><span class="line">            console.log(`获取$&#123;key&#125;:$&#123;res&#125;`)</span><br><span class="line">            return res</span><br><span class="line">        &#125;,</span><br><span class="line">        set(target, key, value, receiver) &#123;</span><br><span class="line">            const res = Reflect.set(target, key, value, receiver)</span><br><span class="line">            console.log(`设置$&#123;key&#125;:$&#123;value&#125;`)</span><br><span class="line">            return res</span><br><span class="line">        &#125;,</span><br><span class="line">        deleteProperty(target, key) &#123;</span><br><span class="line">            const res = Reflect.deleteProperty(target, key)</span><br><span class="line">            console.log(`删除$&#123;key&#125;:$&#123;res&#125;`)</span><br><span class="line">            return res</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    return observed</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Proxy</code>可以直接监听数组的变化（<code>push</code>、<code>shift</code>、<code>splice</code>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const obj = [1,2,3]</span><br><span class="line">const proxtObj = reactive(obj)</span><br><span class="line">obj.psuh(4) // ok</span><br></pre></td></tr></table></figure>
+
+<p><code>Proxy</code>有多达13种拦截方法,不限于<code>apply</code>、<code>ownKeys</code>、<code>deleteProperty</code>、<code>has</code>等等，这是<code>Object.defineProperty</code>不具备的</p>
+<p>正因为<code>defineProperty</code>自身的缺陷，导致<code>Vue2</code>在实现响应式过程需要实现其他的方法辅助（如重写数组方法、增加额外<code>set</code>、<code>delete</code>方法）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 数组重写</span><br><span class="line">const originalProto = Array.prototype</span><br><span class="line">const arrayProto = Object.create(originalProto)</span><br><span class="line">[&#x27;push&#x27;, &#x27;pop&#x27;, &#x27;shift&#x27;, &#x27;unshift&#x27;, &#x27;splice&#x27;, &#x27;reverse&#x27;, &#x27;sort&#x27;].forEach(method =&gt; &#123;</span><br><span class="line">  arrayProto[method] = function () &#123;</span><br><span class="line">    originalProto[method].apply(this.arguments)</span><br><span class="line">    dep.notice()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// set、delete</span><br><span class="line">Vue.set(obj,&#x27;bar&#x27;,&#x27;newbar&#x27;)</span><br><span class="line">Vue.delete(obj),&#x27;bar&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p><code>Proxy</code> 不兼容IE，也没有 <code>polyfill</code>, <code>defineProperty</code> 能支持到IE9</p>
 
          
         
@@ -258,7 +245,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">VUE3</a>
         		</li>
       		
 		</ul>
@@ -325,7 +312,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/08/19/javascript%E7%9A%84%E4%B8%83%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/08/22/vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%93%8D%E5%BA%94%E5%BC%8F%E5%87%BD%E6%95%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -339,15 +326,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/08/19/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          js深拷贝和浅拷贝
-        
-      </div>
-    </a>
   
+    <a href="/2021/08/22/vue2%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%93%8D%E5%BA%94%E5%BC%8F%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue2响应式原理及实现一个响应式函数</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
