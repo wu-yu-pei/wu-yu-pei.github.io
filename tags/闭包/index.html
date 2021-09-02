@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>javascript执行上下文 | 小吴的Blog</title>
+  <title>Tag: 闭包 | 小吴的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="执行上下文 执行上下文(Execution Context): 函数执行前进行的准备工作（也称执行上下文环境） 运行JavaScript代码时，当代码执行进入一个环境时，就会为该环境创建一个执行上下文， 它会在你运行代码前做一些准备工作，如确定作用域，创建局部变量对象等。  ​">
-<meta property="og:type" content="article">
-<meta property="og:title" content="javascript执行上下文">
-<meta property="og:url" content="http://example.com/2021/08/22/javascript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="小吴的Blog">
+<meta property="og:url" content="http://example.com/tags/%E9%97%AD%E5%8C%85/index.html">
 <meta property="og:site_name" content="小吴的Blog">
-<meta property="og:description" content="执行上下文 执行上下文(Execution Context): 函数执行前进行的准备工作（也称执行上下文环境） 运行JavaScript代码时，当代码执行进入一个环境时，就会为该环境创建一个执行上下文， 它会在你运行代码前做一些准备工作，如确定作用域，创建局部变量对象等。  ​">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-08-22T10:14:17.000Z">
-<meta property="article:modified_time" content="2021-08-22T10:54:39.805Z">
 <meta property="article:author" content="Growing">
-<meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="小吴的Blog" type="application/atom+xml">
@@ -155,92 +150,52 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-javascript执行上下文" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      javascript执行上下文
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2021/09/01/%E9%A2%84%E7%BC%96%E8%AF%91-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87-%E5%87%BD%E6%95%B0%E6%8F%90%E5%8D%87-%E9%97%AD%E5%8C%85/" class="archive-article-date">
+  	<time datetime="2021-09-01T11:21:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/09/01/%E9%A2%84%E7%BC%96%E8%AF%91-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87-%E5%87%BD%E6%95%B0%E6%8F%90%E5%8D%87-%E9%97%AD%E5%8C%85/">预编译 作用域 作用域链 变量提升 函数提升 闭包</a>
     </h1>
   
 
-        
-        <a href="/2021/08/22/javascript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" class="archive-article-date">
-  	<time datetime="2021-08-22T10:14:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-         
-         <h3 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h3><blockquote>
-<p>执行上下文(Execution Context): 函数执行前进行的准备工作（也称执行上下文环境）</p>
-<p>运行JavaScript代码时，当代码执行进入一个环境时，就会为该环境创建一个执行上下文，</p>
-<p>它会在你运行代码前做一些准备工作，如确定作用域，创建局部变量对象等。</p>
-</blockquote>
-<p>​                                                                                                                                                            <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6f8556b10379">参考链接</a></p>
-<span id="more"></span>
-
-<h2 id="JS执行环境"><a href="#JS执行环境" class="headerlink" title="JS执行环境"></a>JS执行环境</h2><ul>
-<li>全局环境</li>
-<li>函数环境(局部环境)</li>
-</ul>
-<h2 id="js执行上下文类型"><a href="#js执行上下文类型" class="headerlink" title="js执行上下文类型"></a>js执行上下文类型</h2><ul>
-<li><p>全局执行上下文</p>
-<ol>
-<li><p>在执行全局代码的时候将window确定为全局执行上下文</p>
-</li>
-<li><p>对全集数据进行预处理</p>
-<ul>
-<li>var定义的全局变量==&gt;undefined,并添加为window的属性</li>
-<li>function声明的全局函数 ==&gt; 赋值(fun),添加为window的方法</li>
-<li>this==&gt;赋值为window</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a1 + <span class="string">&#x27;/////&#x27;</span> + <span class="built_in">window</span>.a1)</span><br><span class="line">a2()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line"><span class="keyword">var</span> a1 = <span class="number">3</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&#x27;a2&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a1);</span><br></pre></td></tr></table></figure>
-
-<p>​</p>
-</li>
-</ol>
-</li>
-<li><p>函数执行上下文(局部执行上下文)</p>
-<ol>
-<li><p>在调用函数,准备执行函数之前,创建对的函数执行上下文</p>
-</li>
-<li><p>对数据进行处理</p>
-<ul>
-<li>行参变量==&gt;赋值(实参)=&gt;添加为执行上下文的属性</li>
-<li>arguments==&gt;赋值(实参列表),添加为执行上下文属性</li>
-<li>var定义的局部变量==&gt;undefined,添加为上下执行文属性</li>
-<li>function声明的函数赋值(fun),添加为执行上下文方法</li>
-<li>this==&gt;赋值(调用函数的对象)</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a1</span>) </span>&#123;</span><br><span class="line">           <span class="built_in">console</span>.log(a1)</span><br><span class="line">           <span class="built_in">console</span>.log(a2)</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span><br><span class="line">           <span class="built_in">console</span>.log(fnn);</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">           fnn()</span><br><span class="line">           <span class="keyword">var</span> a2 = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">           <span class="function"><span class="keyword">function</span> <span class="title">fnn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">               <span class="built_in">console</span>.log(<span class="string">&#x27;a3&#x27;</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       fn(<span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ul>
-
-         
-        
-        
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">作用域</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -253,113 +208,18 @@
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/08/22/javascript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2021/08/22/%E5%88%86%E4%BA%AB%E5%87%A0%E5%BC%A0%E5%9B%BE%E7%89%87/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          分享几张图片
-        
-      </div>
-    </a>
   
   
-    <a href="/2021/08/22/Proxy-API/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Proxy API</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    </div></section>
   
 
-  
+    
 
-  
-
-  
-
-  
 
 
           </div>
@@ -382,9 +242,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
