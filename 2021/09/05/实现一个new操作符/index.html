@@ -16,7 +16,7 @@
 <meta property="og:description" content="new 操作符一.new操作符的使用12345678910 &#x2F;&#x2F;构造函数class Person &amp;#123;        constructor(name, age) &amp;#123;            this.name &#x3D; name            this.age &#x3D; age        &amp;#125;    &amp;#125; &#x2F;&#x2F;实例对象    const person1 &#x3D; new">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-05T09:52:10.000Z">
-<meta property="article:modified_time" content="2021-09-05T10:21:42.945Z">
+<meta property="article:modified_time" content="2021-09-05T10:23:12.060Z">
 <meta property="article:author" content="Growing">
 <meta property="article:tag" content="手写">
 <meta name="twitter:card" content="summary">
@@ -179,6 +179,8 @@
          <h4 id="new-操作符"><a href="#new-操作符" class="headerlink" title="new 操作符"></a>new 操作符</h4><h4 id="一-new操作符的使用"><a href="#一-new操作符的使用" class="headerlink" title="一.new操作符的使用"></a>一.new操作符的使用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//构造函数</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.name = name</span><br><span class="line">            <span class="built_in">this</span>.age = age</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> <span class="comment">//实例对象</span></span><br><span class="line">    <span class="keyword">const</span> person1 = <span class="keyword">new</span> Person(<span class="string">&#x27;大大怪&#x27;</span>, <span class="number">21</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(person1)</span><br></pre></td></tr></table></figure>
 
 <hr>
+<span id="more"></span>
+
 <h4 id="二-new操作符的实现-手写"><a href="#二-new操作符的实现-手写" class="headerlink" title="二.new操作符的实现(手写)"></a>二.new操作符的实现(手写)</h4><ul>
 <li>首先来看一下指向new操作的时候 会发生的一个状况</li>
 </ul>
