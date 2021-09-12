@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>小吴的Blog</title>
+  <title>call apply bind的实现 | 小吴的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="小吴的Blog">
-<meta property="og:url" content="http://example.com/page/3/index.html">
+  <meta name="description" content="一.call|apply|bind 作用: 改变this的指向   不同之处: call和apply的传参方式不同 bind与call和apply的调用方式不同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="call apply bind的实现">
+<meta property="og:url" content="http://example.com/2021/09/12/call-apply-bind%E7%9A%84%E5%AE%9E%E7%8E%B0/index.html">
 <meta property="og:site_name" content="小吴的Blog">
+<meta property="og:description" content="一.call|apply|bind 作用: 改变this的指向   不同之处: call和apply的传参方式不同 bind与call和apply的调用方式不同">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-09-12T07:42:19.000Z">
+<meta property="article:modified_time" content="2021-09-12T07:59:49.392Z">
 <meta property="article:author" content="Growing">
+<meta property="article:tag" content="手写">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="小吴的Blog" type="application/atom+xml">
@@ -150,389 +155,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-leetcode-1441用栈构建数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-call-apply-bind的实现" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/25/leetcode-1441%E7%94%A8%E6%A0%88%E6%9E%84%E5%BB%BA%E6%95%B0%E7%BB%84/">leetcode 1441用栈构建数组</a>
+    <h1 class="article-title" itemprop="name">
+      call apply bind的实现
     </h1>
   
 
         
-        <a href="/2021/08/25/leetcode-1441%E7%94%A8%E6%A0%88%E6%9E%84%E5%BB%BA%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2021-08-25T01:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-25</time>
+        <a href="/2021/09/12/call-apply-bind%E7%9A%84%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
+  	<time datetime="2021-09-12T07:42:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-          <h4 id="1441-用栈操作构建数组"><a href="#1441-用栈操作构建数组" class="headerlink" title="1441. 用栈操作构建数组"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/build-an-array-with-stack-operations/">1441. 用栈操作构建数组</a></h4><p>给你一个目标数组 <code>target</code> 和一个整数 <code>n</code>。每次迭代，需要从  <code>list = &#123;1,2,3..., n&#125;</code> 中依序读取一个数字。</p>
-<p>请使用下述操作来构建目标数组 <code>target</code> ：</p>
-<ul>
-<li><strong>Push</strong>：从 <code>list</code> 中读取一个新元素， 并将其推入数组中。</li>
-<li><strong>Pop</strong>：删除数组中的最后一个元素。</li>
-<li>如果目标数组构建完成，就停止读取更多元素。</li>
+         
+         <h3 id="一-call-apply-bind"><a href="#一-call-apply-bind" class="headerlink" title="一.call|apply|bind"></a>一.call|apply|bind</h3><ul>
+<li>作用:<ul>
+<li>改变this的指向</li>
 </ul>
-<p>题目数据保证目标数组严格递增，并且只包含 <code>1</code> 到 <code>n</code> 之间的数字。</p>
-<p>请返回构建目标数组所用的操作序列。</p>
-<p>题目数据保证答案是唯一的。</p>
-         
-        
-        
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/25/leetcode-1441%E7%94%A8%E6%A0%88%E6%9E%84%E5%BB%BA%E6%95%B0%E7%BB%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-leetcode-1047删除字符串中的所有相邻重复项" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/25/leetcode-1047%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/">leetcode 1047删除字符串中的所有相邻重复项</a>
-    </h1>
-  
-
-        
-        <a href="/2021/08/25/leetcode-1047%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/" class="archive-article-date">
-  	<time datetime="2021-08-25T01:27:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          <h4 id="1047-删除字符串中的所有相邻重复项"><a href="#1047-删除字符串中的所有相邻重复项" class="headerlink" title="1047. 删除字符串中的所有相邻重复项"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/">1047. 删除字符串中的所有相邻重复项</a></h4><p>给出由小写字母组成的字符串 <code>S</code>，<strong>重复项删除操作</strong>会选择两个相邻且相同的字母，并删除它们。</p>
-<p>在 S 上反复执行重复项删除操作，直到无法继续删除。</p>
-<p>在完成所有重复项删除操作后返回最终的字符串。答案保证唯一。</p>
-         
-        
-        
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/25/leetcode-1047%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-leetcode-234回文链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/24/leetcode-234%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/">leetcode 234回文链表</a>
-    </h1>
-  
-
-        
-        <a href="/2021/08/24/leetcode-234%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2021-08-24T04:18:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          <h4 id="234-回文链表"><a href="#234-回文链表" class="headerlink" title="234. 回文链表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/palindrome-linked-list/">234. 回文链表</a></h4><p>给你一个单链表的头节点 <code>head</code> ，请你判断该链表是否为回文链表。如果是，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">输出：<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">输出：<span class="literal">false</span></span><br></pre></td></tr></table></figure>
-         
-        
-        
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">链表</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/24/leetcode-234%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-leetcode-844比较含退格的字符串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/24/leetcode-844%E6%AF%94%E8%BE%83%E5%90%AB%E9%80%80%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/">leetcode 844比较含退格的字符串</a>
-    </h1>
-  
-
-        
-        <a href="/2021/08/24/leetcode-844%E6%AF%94%E8%BE%83%E5%90%AB%E9%80%80%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="archive-article-date">
-  	<time datetime="2021-08-24T03:58:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          <h4 id="844-比较含退格的字符串"><a href="#844-比较含退格的字符串" class="headerlink" title="844. 比较含退格的字符串"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/backspace-string-compare/">844. 比较含退格的字符串</a></h4><p>给定 <code>S</code> 和 <code>T</code> 两个字符串，当它们分别被输入到空白的文本编辑器后，判断二者是否相等，并返回结果。 <code>#</code> 代表退格字符。</p>
-<p><strong>注意：</strong>如果对空文本输入退格字符，文本继续为空。</p>
-         
-        
-        
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/24/leetcode-844%E6%AF%94%E8%BE%83%E5%90%AB%E9%80%80%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-leetcode-232用两个栈实现一个队列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/24/leetcode-232%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%98%9F%E5%88%97/">leetcode 232用两个栈实现一个队列</a>
-    </h1>
-  
-
-        
-        <a href="/2021/08/24/leetcode-232%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%98%9F%E5%88%97/" class="archive-article-date">
-  	<time datetime="2021-08-24T03:06:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          <h4 id="232-用栈实现队列"><a href="#232-用栈实现队列" class="headerlink" title="232. 用栈实现队列"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-queue-using-stacks/">232. 用栈实现队列</a></h4><p>请你仅使用两个栈实现先入先出队列。队列应当支持一般队列支持的所有操作（<code>push</code>、<code>pop</code>、<code>peek</code>、<code>empty</code>）：</p>
-<p>实现 <code>MyQueue</code> 类：</p>
-<ul>
-<li><code>void push(int x)</code> 将元素 x 推到队列的末尾</li>
-<li><code>int pop()</code> 从队列的开头移除并返回元素</li>
-<li><code>int peek()</code> 返回队列开头的元素</li>
-<li><code>boolean empty()</code> 如果队列为空，返回 <code>true</code> ；否则，返回 <code>false</code></li>
+</li>
+<li>不同之处:<ul>
+<li>call和apply的传参方式不同</li>
+<li>bind与call和apply的调用方式不同</li>
 </ul>
+</li>
+</ul>
+<span id="more"></span>
+
+<p>###二.基本使用</p>
+<p>call:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">n, m</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;add函数执行了&#x27;</span>, <span class="built_in">this</span>, n + m);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;哈哈&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add.call(&#123;<span class="attr">name</span>:<span class="string">&quot;xiaowu&quot;</span>&#125;, <span class="number">1</span>, <span class="number">2</span>) <span class="comment">// &#x27;add函数执行了&#x27; &#123;name:&quot;xiaowu&quot;&#125;  3</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>allpy:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">n, m</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;add函数执行了&#x27;</span>, <span class="built_in">this</span>, n + m);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;哈哈&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//注意:与call的参数传递不同 apply参数是放在数组里面</span></span><br><span class="line">add.apply(&#123;<span class="attr">name</span>:<span class="string">&quot;xiaowu&quot;</span>&#125;, [<span class="number">1</span>,<span class="number">2</span>]) <span class="comment">// &#x27;add函数执行了&#x27; &#123;name:&quot;xiaowu&quot;&#125;  3</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>bind:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">n, m</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;add函数执行了&#x27;</span>, <span class="built_in">this</span>, n + m);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;哈哈&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//方式一:</span></span><br><span class="line"><span class="keyword">let</span> res = add.bind(&#123;<span class="attr">name</span>:<span class="string">&quot;xiaowu&quot;</span>&#125;, <span class="number">1</span>,<span class="number">2</span>) </span><br><span class="line">res()    <span class="comment">// &#x27;add函数执行了&#x27; &#123;name:&quot;xiaowu&quot;&#125;  3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//方式二: 把参数分开传递也行</span></span><br><span class="line"><span class="keyword">let</span> res = add.bind(&#123;<span class="attr">name</span>:<span class="string">&quot;xiaowu&quot;</span>&#125;, <span class="number">1</span>) </span><br><span class="line">res(<span class="number">2</span>)    <span class="comment">// &#x27;add函数执行了&#x27; &#123;name:&quot;xiaowu&quot;&#125;  3</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="手写实现-部分边界情况可能未考虑"><a href="#手写实现-部分边界情况可能未考虑" class="headerlink" title="手写实现(部分边界情况可能未考虑)"></a>手写实现(部分边界情况可能未考虑)</h3><ol>
+<li>call</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span> (<span class="params">thisArg,...arg</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 1.保存函数</span></span><br><span class="line">            <span class="keyword">const</span> fn = <span class="built_in">this</span></span><br><span class="line">            <span class="comment">// 2.判断this到底绑定到哪里</span></span><br><span class="line">            thisArg = thisArg ? <span class="built_in">Object</span>(thisArg) : <span class="built_in">window</span></span><br><span class="line">            <span class="comment">// 3.调用函数</span></span><br><span class="line">            thisArg.fn = fn</span><br><span class="line">            <span class="keyword">var</span> res = thisArg.fn(...arg)</span><br><span class="line">            <span class="keyword">delete</span> thisArg.fn</span><br><span class="line">            <span class="comment">// 4.返回返回值</span></span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试:</span></span><br><span class="line">add.myCall(<span class="string">&quot;123&quot;</span>, <span class="number">1</span>, <span class="number">2</span>)  <span class="comment">//add函数执行了 String &#123;&#x27;123&#x27;, fn: ƒ&#125; 3</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>apply</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="built_in">Function</span>.prototype.myApple = <span class="function"><span class="keyword">function</span> (<span class="params">thisArg,argArr</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">const</span> fn = <span class="built_in">this</span></span><br><span class="line"></span><br><span class="line">            thisArg = (thisArg !== <span class="literal">null</span> &amp;&amp; thisArg !== <span class="literal">undefined</span>) ? <span class="built_in">Object</span>(thisArg) : <span class="built_in">window</span></span><br><span class="line"></span><br><span class="line">            thisArg.fn = fn</span><br><span class="line">            <span class="keyword">const</span> res = thisArg.fn(...argArr || [])</span><br><span class="line">            <span class="keyword">delete</span> thisArg.fn</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//测试:</span></span><br><span class="line">add.myApple(<span class="string">&quot;456&quot;</span>)  <span class="comment">//add函数执行了 String &#123;&#x27;456&#x27;, fn: ƒ&#125; 5</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>bind</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="built_in">Function</span>.prototype.myBind = <span class="function"><span class="keyword">function</span> (<span class="params">thisArg, ...arg1</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">const</span> fn = <span class="built_in">this</span></span><br><span class="line"></span><br><span class="line">            thisArg = (thisArg !== <span class="literal">null</span> &amp;&amp; thisArg !== <span class="literal">undefined</span>) ? <span class="built_in">Object</span>(thisArg) : <span class="built_in">window</span></span><br><span class="line">            thisArg.fn = fn</span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...arg2</span>) </span>&#123;</span><br><span class="line">               <span class="keyword">let</span> res = thisArg.fn(...arg1,...arg2)</span><br><span class="line">               <span class="keyword">return</span> res</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">delete</span> thisArg.fn</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试</span></span><br><span class="line">add.myBind(<span class="string">&quot;456&quot;</span>,<span class="number">10</span>)(<span class="number">20</span>) <span class="comment">//add函数执行了 String &#123;&#x27;456&#x27;, fn: ƒ&#125; 30</span></span><br><span class="line">add.myBind(<span class="string">&quot;456&quot;</span>,<span class="number">10</span>,<span class="number">20</span>)() <span class="comment">//add函数执行了 String &#123;&#x27;456&#x27;, fn: ƒ&#125; 30</span></span><br></pre></td></tr></table></figure>
+
+
          
         
         
@@ -545,7 +233,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">手写</a>
         		</li>
       		
 		</ul>
@@ -557,7 +245,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
         		</li>
       		
 		</ul>
@@ -565,16 +253,75 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/24/leetcode-232%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%98%9F%E5%88%97/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/09/12/call-apply-bind%E7%9A%84%E5%AE%9E%E7%8E%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2021/09/05/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAnew%E6%93%8D%E4%BD%9C%E7%AC%A6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">实现一个new操作符</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -589,19 +336,33 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-call-apply-bind"><span class="toc-number">1.</span> <span class="toc-text">一.call|apply|bind</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0-%E9%83%A8%E5%88%86%E8%BE%B9%E7%95%8C%E6%83%85%E5%86%B5%E5%8F%AF%E8%83%BD%E6%9C%AA%E8%80%83%E8%99%91"><span class="toc-number">2.</span> <span class="toc-text">手写实现(部分边界情况可能未考虑)</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
 
 
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
-    </nav>
   
 
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -623,8 +384,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
