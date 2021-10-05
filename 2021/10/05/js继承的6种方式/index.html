@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | 小吴的Blog</title>
+  <title>js继承的6种方式 | 小吴的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="小吴的Blog">
-<meta property="og:url" content="http://example.com/archives/page/2/index.html">
+  <meta name="description" content="js继承的六种方式一.原型链式继承 12345678910111213141516 &#x2F;&#x2F; Person类 function Person(name) &amp;#123;     this.name &#x3D; name     this.say &#x3D; function() &amp;#123;         console.log(&amp;#x27;我会say&amp;#x27;)     &amp;#125; &amp;#125; Person.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js继承的6种方式">
+<meta property="og:url" content="http://example.com/2021/10/05/js%E7%BB%A7%E6%89%BF%E7%9A%846%E7%A7%8D%E6%96%B9%E5%BC%8F/index.html">
 <meta property="og:site_name" content="小吴的Blog">
+<meta property="og:description" content="js继承的六种方式一.原型链式继承 12345678910111213141516 &#x2F;&#x2F; Person类 function Person(name) &amp;#123;     this.name &#x3D; name     this.say &#x3D; function() &amp;#123;         console.log(&amp;#x27;我会say&amp;#x27;)     &amp;#125; &amp;#125; Person.">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-05T10:38:37.000Z">
+<meta property="article:modified_time" content="2021-10-05T10:50:04.809Z">
 <meta property="article:author" content="Growing">
+<meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="小吴的Blog" type="application/atom+xml">
@@ -150,517 +155,220 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-js继承的6种方式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js继承的6种方式
+    </h1>
+  
+
+        
+        <a href="/2021/10/05/js%E7%BB%A7%E6%89%BF%E7%9A%846%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2021-10-05T10:38:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-05</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+         
+         <h3 id="js继承的六种方式"><a href="#js继承的六种方式" class="headerlink" title="js继承的六种方式"></a>js继承的六种方式</h3><h4 id="一-原型链式继承"><a href="#一-原型链式继承" class="headerlink" title="一.原型链式继承"></a>一.原型链式继承</h4><hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// Person类</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">     <span class="built_in">this</span>.name = name</span><br><span class="line">     <span class="built_in">this</span>.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">&#x27;我会say&#x27;</span>)</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> Person.prototype.age = <span class="number">20</span></span><br><span class="line"><span class="comment">// 学生类</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">score</span>) </span>&#123;</span><br><span class="line">     <span class="built_in">this</span>.score = score</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">// 现在要通过原型链的方式 让Studet继承Person</span></span><br><span class="line"> Student.prototype = <span class="keyword">new</span> Person(<span class="string">&#x27;张三&#x27;</span>)    <span class="comment">//让Student的显示原型 指向new Person 这样Student         就有了Person的所有属性和方法</span></span><br><span class="line"> <span class="keyword">var</span> s1 = <span class="keyword">new</span> Student(<span class="number">90</span>)</span><br><span class="line"> <span class="built_in">console</span>.log(s1)</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>总结**:</p>
+<p>​        重点：让新实例的原型等于父类的实例。</p>
+<p>​        特点：1、实例可继承的属性有：实例的构造函数的属性，父类构造函数属性，父类原型的属性。（新实例不会继承父类实例的属性！）</p>
+<p>​        缺点：1、新实例无法向父类构造函数传参。</p>
+<p>​        2、继承单一。</p>
+<p>​        3、所有新实例都会共享父类实例的属性。（原型上的属性是共享的，一个实例修改了原型属性，另一个实例的原型属性也会被修改！）</p>
+<h4 id="二-借用构造函数继承"><a href="#二-借用构造函数继承" class="headerlink" title="二.借用构造函数继承"></a>二.借用构造函数继承</h4><hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">score</span>)  </span>&#123;</span><br><span class="line">    Person.call(<span class="built_in">this</span>,<span class="string">&#x27;student&#x27;</span>)     <span class="comment">//通过call/apply/bind 把Person中的this绑定到Student中</span></span><br><span class="line">    <span class="built_in">this</span>.score = score</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> s1 = <span class="keyword">new</span> Student(<span class="number">90</span>)</span><br><span class="line"><span class="built_in">console</span>.log(s1)</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结:</strong></p>
+<p>​        重点：用.call()和.apply()将父类构造函数引入子类函数（在子类函数中做了父类函数的自执行（复制））</p>
+<p>​        特点：1、只继承了父类构造函数的属性，没有继承父类原型的属性。</p>
+<p>​        2、解决了原型链继承缺点1、2、3。</p>
+<p>​        3、可以继承多个构造函数属性（call多个）。</p>
+<p>​        4、在子实例中可向父实例传参。</p>
+<p>​        缺点：1、只能继承父类构造函数的属性。</p>
+<p>​        2、无法实现构造函数的复用。（每次用每次都要重新调用）</p>
+<p>​        3、每个新实例都有父类构造函数的副本，臃肿。</p>
+<h4 id="三-组合式继承"><a href="#三-组合式继承" class="headerlink" title="三.组合式继承"></a>三.组合式继承</h4><hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Studen</span>(<span class="params">score</span>) </span>&#123;</span><br><span class="line">     Person.call(<span class="built_in">this</span>,<span class="string">&#x27;学生&#x27;</span>)</span><br><span class="line">     <span class="built_in">this</span>.score = score</span><br><span class="line"> &#125;</span><br><span class="line"> Studen.prototype = <span class="keyword">new</span> Person()</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">var</span> s1 = <span class="keyword">new</span> Studen(<span class="number">90</span>)</span><br><span class="line"> <span class="built_in">console</span>.log(s1)</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结:</strong></p>
+<p>​        特点：1、可以继承父类原型上的属性，可以传参，可复用。</p>
+<p>​        2、每个新实例引入的构造函数属性是私有的。</p>
+<p>​        缺点：调用了两次父类构造函数（耗内存），子类的构造函数会代替原型上的那个父类构造函数。</p>
+<h4 id="四-原型式继承"><a href="#四-原型式继承" class="headerlink" title="四.原型式继承"></a>四.原型式继承</h4><hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">content</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">     F.prototype = obj</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">new</span> F()</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">var</span> p = <span class="keyword">new</span> Person()</span><br><span class="line"> <span class="keyword">var</span> p1 = content(p)</span><br><span class="line"> <span class="built_in">console</span>.log(p1.age)</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结:</strong></p>
+<p>​        重点：用一个函数包装一个对象，然后返回这个函数的调用，这个函数就变成了个可以随意增添属性的实例或对象。object.create()就是这个原理。</p>
+<p>​        特点：类似于复制一个对象，用函数来包装。</p>
+<p>​        缺点：1、所有实例都会继承原型上的属性。</p>
+<p>​        2、无法实现复用。（新实例属性都是后面添加的）</p>
+<h4 id="五-寄生式继承"><a href="#五-寄生式继承" class="headerlink" title="五.寄生式继承"></a>五.寄生式继承</h4><hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">content</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    F.prototype = obj</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F()</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person()</span><br><span class="line"><span class="comment">// 以上式原型式继承  ,给原型式继承在套个壳子传递参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">subobject</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sub = content(obj)</span><br><span class="line">    sub.name = <span class="string">&#x27;学生&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> sub</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sub2 = subobject(p)</span><br><span class="line"><span class="built_in">console</span>.log(sub2);</span><br></pre></td></tr></table></figure>
+
+<p> <strong>总结:</strong></p>
+<p>​        重点：就是给原型式继承外面套了个壳子。</p>
+<p>​        优点：没有创建自定义类型，因为只是套了个壳子返回对象（这个），这个函数顺理成章就成了创建的新对象。</p>
+<p>​        缺点：没用到原型，无法复用。</p>
+<h4 id="六-寄生组合式继承"><a href="#六-寄生组合式继承" class="headerlink" title="六.寄生组合式继承"></a>六.寄生组合式继承</h4><hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">content</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">     F.prototype = obj</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">new</span> F()</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">// content就是F实例的另一种表示方式</span></span><br><span class="line"> <span class="keyword">var</span> con = content(Person.prototype)</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 组合</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     Person.call(<span class="built_in">this</span>) <span class="comment">//继承父类构造函数的属性</span></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> Sub.prototype = con  <span class="comment">//继承con实例</span></span><br><span class="line"> con.constructor = Sub    <span class="comment">//修复实例</span></span><br><span class="line"> <span class="keyword">var</span> sub1 = <span class="keyword">new</span> Sub()</span><br><span class="line"> <span class="built_in">console</span>.log(sub1.age)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+         
+        
+        
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/25/leetcode-1475%E5%95%86%E5%93%81%E6%8A%98%E6%89%A3%E7%9A%84%E6%9C%80%E7%BB%88%E4%BB%B7%E6%A0%BC/" class="archive-article-date">
-  	<time datetime="2021-08-25T02:36:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/25/leetcode-1475%E5%95%86%E5%93%81%E6%8A%98%E6%89%A3%E7%9A%84%E6%9C%80%E7%BB%88%E4%BB%B7%E6%A0%BC/">leetcode 1475商品折扣的最终价格</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/10/05/js%E7%BB%A7%E6%89%BF%E7%9A%846%E7%A7%8D%E6%96%B9%E5%BC%8F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/25/leetcode-1441%E7%94%A8%E6%A0%88%E6%9E%84%E5%BB%BA%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2021-08-25T01:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/09/12/call-apply-bind%E7%9A%84%E5%AE%9E%E7%8E%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">call apply bind的实现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/25/leetcode-1441%E7%94%A8%E6%A0%88%E6%9E%84%E5%BB%BA%E6%95%B0%E7%BB%84/">leetcode 1441用栈构建数组</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#js%E7%BB%A7%E6%89%BF%E7%9A%84%E5%85%AD%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">js继承的六种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80-%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%BC%8F%E7%BB%A7%E6%89%BF"><span class="toc-number">1.1.</span> <span class="toc-text">一.原型链式继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C-%E5%80%9F%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%BB%A7%E6%89%BF"><span class="toc-number">1.2.</span> <span class="toc-text">二.借用构造函数继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89-%E7%BB%84%E5%90%88%E5%BC%8F%E7%BB%A7%E6%89%BF"><span class="toc-number">1.3.</span> <span class="toc-text">三.组合式继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B-%E5%8E%9F%E5%9E%8B%E5%BC%8F%E7%BB%A7%E6%89%BF"><span class="toc-number">1.4.</span> <span class="toc-text">四.原型式继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94-%E5%AF%84%E7%94%9F%E5%BC%8F%E7%BB%A7%E6%89%BF"><span class="toc-number">1.5.</span> <span class="toc-text">五.寄生式继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AD-%E5%AF%84%E7%94%9F%E7%BB%84%E5%90%88%E5%BC%8F%E7%BB%A7%E6%89%BF"><span class="toc-number">1.6.</span> <span class="toc-text">六.寄生组合式继承</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/25/leetcode-1047%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/" class="archive-article-date">
-  	<time datetime="2021-08-25T01:27:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/25/leetcode-1047%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/">leetcode 1047删除字符串中的所有相邻重复项</a>
-    </h1>
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/24/leetcode-234%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2021-08-24T04:18:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/24/leetcode-234%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/">leetcode 234回文链表</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">链表</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/24/leetcode-844%E6%AF%94%E8%BE%83%E5%90%AB%E9%80%80%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="archive-article-date">
-  	<time datetime="2021-08-24T03:58:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/24/leetcode-844%E6%AF%94%E8%BE%83%E5%90%AB%E9%80%80%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/">leetcode 844比较含退格的字符串</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/24/leetcode-232%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%98%9F%E5%88%97/" class="archive-article-date">
-  	<time datetime="2021-08-24T03:06:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/24/leetcode-232%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%98%9F%E5%88%97/">leetcode 232用两个栈实现一个队列</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/24/leetcode-225%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%A0%88/" class="archive-article-date">
-  	<time datetime="2021-08-24T02:47:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/24/leetcode-225%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%A0%88/">leetcode 225用队列实现一个栈</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/23/node%E4%B8%ADkoa%E7%9A%84%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2021-08-23T06:47:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/23/node%E4%B8%ADkoa%E7%9A%84%E4%BD%BF%E7%94%A8/">node中koa的使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端//" class="article-tag-list-link color3">后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/23/leetcode-496%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/" class="archive-article-date">
-  	<time datetime="2021-08-23T03:48:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/23/leetcode-496%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/">leetcode 496下一个更大元素</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/23/leetcode-155%E6%9C%80%E5%B0%8F%E6%A0%88/" class="archive-article-date">
-  	<time datetime="2021-08-23T03:09:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/23/leetcode-155%E6%9C%80%E5%B0%8F%E6%A0%88/">leetcode 155最小栈</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">上一页</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/3/">下一页</a>
-    </nav>
-  
-
 
 
           </div>
@@ -683,8 +391,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
