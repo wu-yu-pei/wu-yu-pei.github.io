@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>var,let,coinst区别 | 小吴的Blog</title>
+  <title>树的深度优先遍历 | 小吴的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一.var 在ES5中，顶层对象的属性和全局变量是等价的，用var声明的变量既是全局变量，也是顶层变量  注: 顶层对象，在浏览器环境指的是window对象，在 Node 指的是global对象 12var a &#x3D; &amp;#x27;wuyupei&amp;#x27;console.log(window.a) &#x2F;&#x2F; wuyupei   使用var声明的变量存在变量提升 12console.log(a) &#x2F;&#x2F;un">
+  <meta name="description" content="二叉树的遍历(递归版)一个树结构: 123456789101112131415161718192021var tree &#x3D; &amp;#123;        value: 3,        left: &amp;#123;            value: 9,            left: null,            right: null        &amp;#125;,        right">
 <meta property="og:type" content="article">
-<meta property="og:title" content="var,let,coinst区别">
-<meta property="og:url" content="http://example.com/2021/08/22/var-let-coinst%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:title" content="树的深度优先遍历">
+<meta property="og:url" content="http://example.com/2021/10/15/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/index.html">
 <meta property="og:site_name" content="小吴的Blog">
-<meta property="og:description" content="一.var 在ES5中，顶层对象的属性和全局变量是等价的，用var声明的变量既是全局变量，也是顶层变量  注: 顶层对象，在浏览器环境指的是window对象，在 Node 指的是global对象 12var a &#x3D; &amp;#x27;wuyupei&amp;#x27;console.log(window.a) &#x2F;&#x2F; wuyupei   使用var声明的变量存在变量提升 12console.log(a) &#x2F;&#x2F;un">
+<meta property="og:description" content="二叉树的遍历(递归版)一个树结构: 123456789101112131415161718192021var tree &#x3D; &amp;#123;        value: 3,        left: &amp;#123;            value: 9,            left: null,            right: null        &amp;#125;,        right">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-08-22T04:27:05.000Z">
-<meta property="article:modified_time" content="2021-08-22T04:41:01.092Z">
+<meta property="og:image" content="http://example.com/2021/10/15/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/01.png">
+<meta property="article:published_time" content="2021-10-15T10:56:54.000Z">
+<meta property="article:modified_time" content="2021-10-15T12:02:58.992Z">
 <meta property="article:author" content="Growing">
-<meta property="article:tag" content="ES6">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/10/15/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/01.png">
   
     <link rel="alternative" href="/atom.xml" title="小吴的Blog" type="application/atom+xml">
   
@@ -155,20 +157,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-var-let-coinst区别" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-树的深度优先遍历" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      var,let,coinst区别
+      树的深度优先遍历
     </h1>
   
 
         
-        <a href="/2021/08/22/var-let-coinst%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2021-08-22T04:27:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-22</time>
+        <a href="/2021/10/15/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/" class="archive-article-date">
+  	<time datetime="2021-10-15T10:56:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-15</time>
 </a>
         
       </header>
@@ -176,75 +178,45 @@
     <div class="article-entry" itemprop="articleBody">
       
          
-         <h3 id="一-var"><a href="#一-var" class="headerlink" title="一.var"></a>一.var</h3><blockquote>
-<p>在ES5中，顶层对象的属性和全局变量是等价的，用<code>var</code>声明的变量既是全局变量，也是顶层变量</p>
-</blockquote>
-<p>注: 顶层对象，在浏览器环境指的是<code>window</code>对象，在 <code>Node</code> 指的是<code>global</code>对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&#x27;wuyupei&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a) <span class="comment">// wuyupei </span></span><br></pre></td></tr></table></figure>
+         <h4 id="二叉树的遍历-递归版"><a href="#二叉树的遍历-递归版" class="headerlink" title="二叉树的遍历(递归版)"></a>二叉树的遍历(递归版)</h4><p>一个树结构:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tree = &#123;</span><br><span class="line">        <span class="attr">value</span>: <span class="number">3</span>,</span><br><span class="line">        <span class="attr">left</span>: &#123;</span><br><span class="line">            <span class="attr">value</span>: <span class="number">9</span>,</span><br><span class="line">            <span class="attr">left</span>: <span class="literal">null</span>,</span><br><span class="line">            <span class="attr">right</span>: <span class="literal">null</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">right</span>: &#123;</span><br><span class="line">            <span class="attr">value</span>: <span class="number">20</span>,</span><br><span class="line">            <span class="attr">left</span>: &#123;</span><br><span class="line">                <span class="attr">value</span>: <span class="number">15</span>,</span><br><span class="line">                <span class="attr">left</span>: <span class="literal">null</span>,</span><br><span class="line">                <span class="attr">right</span>: <span class="literal">null</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">right</span>: &#123;</span><br><span class="line">                <span class="attr">value</span>: <span class="number">7</span>,</span><br><span class="line">                <span class="attr">left</span>: <span class="literal">null</span>,</span><br><span class="line">                <span class="attr">right</span>: <span class="literal">null</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>使用<code>var</code>声明的变量存在变量提升</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//undefined</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="string">&#x27;wuyupei&#x27;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>先序遍历(根 左 右)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">xian</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">if</span> (!root) <span class="keyword">return</span></span><br><span class="line">           <span class="built_in">console</span>.log(root.value)</span><br><span class="line">           xian(root.left)</span><br><span class="line">           xian(root.right)</span><br><span class="line">       &#125;</span><br><span class="line">       xian(tree) <span class="comment">// 3 9 20 15 7</span></span><br></pre></td></tr></table></figure>
 
-<span id="more"></span>
 
-<p>在编译阶段,编译器会将其变成一下执行</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line">a = <span class="string">&#x27;wuyupei&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p>使用<code>var</code>可以对一个变量进行多次声明,后声明的变量会覆盖前面的变量</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">20</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">30</span></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>中序遍历(左 根 右)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">xian</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">if</span> (!root) <span class="keyword">return</span></span><br><span class="line">           xian(root.left)</span><br><span class="line">           <span class="built_in">console</span>.log(root.value)</span><br><span class="line">           xian(root.right)</span><br><span class="line">       &#125;</span><br><span class="line">       xian(tree)<span class="comment">// 9 3 15 20 7</span></span><br></pre></td></tr></table></figure>
 
-<p>在函数中使用使用<code>var</code>声明变量时候，该变量是局部的</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">20</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">change</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">30</span></span><br><span class="line">&#125;</span><br><span class="line">change()</span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// 20 </span></span><br></pre></td></tr></table></figure>
 
-<p>而如果在函数内不使用<code>var</code>，该变量是全局的</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">20</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">change</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   a = <span class="number">30</span></span><br><span class="line">&#125;</span><br><span class="line">change()</span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// 30 </span></span><br></pre></td></tr></table></figure>
 
-<h3 id="二-let"><a href="#二-let" class="headerlink" title="二.let"></a>二.let</h3><p><code>let</code>是<code>ES6</code>新增的命令，用来声明变量</p>
-<p>用法类似于<code>var</code>，但是所声明的变量，只在<code>let</code>命令所在的代码块内有效</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// ReferenceError: a is not defined.</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>后续遍历(左 右 根)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">xian</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!root) <span class="keyword">return</span></span><br><span class="line">            xian(root.left)</span><br><span class="line">            xian(root.right)</span><br><span class="line">            <span class="built_in">console</span>.log(root.value)</span><br><span class="line">        &#125;</span><br><span class="line">        xian(tree) <span class="comment">// 9 15 20 7 3</span></span><br></pre></td></tr></table></figure>
 
-<p>不存在变量提升</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// 报错ReferenceError</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">2</span></span><br></pre></td></tr></table></figure>
 
-<p>这表示在声明它之前，变量<code>a</code>是不存在的，这时如果用到它，就会抛出一个错误</p>
-<p>只要块级作用域内存在<code>let</code>命令，这个区域就不再受外部影响</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">123</span></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    a = <span class="string">&#x27;abc&#x27;</span> <span class="comment">// ReferenceError</span></span><br><span class="line">    <span class="keyword">let</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>使用<code>let</code>声明变量前，该变量都不可用，也就是大家常说的“暂时性死区”</p>
-<p>最后，<code>let</code>不允许在相同作用域中重复声明</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">20</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">30</span></span><br><span class="line"><span class="comment">// Uncaught SyntaxError: Identifier &#x27;a&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
 
-<p>注意的是相同作用域，下面这种情况是不会报错的</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">20</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">30</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>因此，我们不能在函数内部重新声明参数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">arg</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> arg;</span><br><span class="line">&#125;</span><br><span class="line">func()</span><br><span class="line"><span class="comment">// Uncaught SyntaxError: Identifier &#x27;arg&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="三、const"><a href="#三、const" class="headerlink" title="三、const"></a>三、const</h2><p><code>const</code>声明一个只读的常量，一旦声明，常量的值就不能改变</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">1</span></span><br><span class="line">a = <span class="number">3</span></span><br><span class="line"><span class="comment">// TypeError: Assignment to constant variable.</span></span><br></pre></td></tr></table></figure>
-
-<p>这意味着，<code>const</code>一旦声明变量，就必须立即初始化，不能留到以后赋值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a;</span><br><span class="line"><span class="comment">// SyntaxError: Missing initializer in const declaration</span></span><br></pre></td></tr></table></figure>
-
-<p>如果之前用<code>var</code>或<code>let</code>声明过变量，再用<code>const</code>声明同样会报错</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">20</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">20</span></span><br><span class="line"><span class="keyword">const</span> a = <span class="number">30</span></span><br><span class="line"><span class="keyword">const</span> b = <span class="number">30</span></span><br><span class="line"><span class="comment">// 都会报错</span></span><br></pre></td></tr></table></figure>
-
-<p><code>const</code>实际上保证的并不是变量的值不得改动，而是变量指向的那个内存地址所保存的数据不得改动</p>
-<p>对于简单类型的数据，值就保存在变量指向的那个内存地址，因此等同于常量</p>
-<p>对于复杂类型的数据，变量指向的内存地址，保存的只是一个指向实际数据的指针，<code>const</code>只能保证这个指针是固定的，并不能确保改变量的结构不变</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为 foo 添加一个属性，可以成功</span></span><br><span class="line">foo.prop = <span class="number">123</span>;</span><br><span class="line">foo.prop <span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将 foo 指向另一个对象，就会报错</span></span><br><span class="line">foo = &#123;&#125;; <span class="comment">// TypeError: &quot;foo&quot; is read-only</span></span><br></pre></td></tr></table></figure>
-
-<p>其它情况，<code>const</code>与<code>let</code>一样</p>
-<h2 id="四、区别"><a href="#四、区别" class="headerlink" title="四、区别"></a>四、区别</h2><p><code>var</code>、<code>let</code>、<code>const</code>三者区别：</p>
-<ul>
-<li>变量提升</li>
-<li>暂时性死区</li>
-<li>块级作用域</li>
-<li>重复声明</li>
-<li>修改声明的变量</li>
-<li>使用</li>
-</ul>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>能用<code>const</code>的情况尽量使用<code>const</code>，其他情况下大多数使用<code>let</code>，避免使用<code>var</code></p>
+<p>通过二叉树的先序遍历对递归的理解:</p>
+<ol>
+<li>给调用函数的地方打上断点</li>
+</ol>
+<p><img src="/2021/10/15/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/01.png"></p>
+<ol start="2">
+<li>点击执行一步</li>
+<li>此时函数调用栈中有一个xian函数,参数的值:root={left: {value: 9, left: null, right: null}right: {value: 20, left: {…}, right: {…}}value: 3}</li>
+<li>函数执行到699行,又会往函数调用栈里面push一个(1)xian(root.left) root= {left: null,right: null,value: 9},但是上一个函数还没有执行完,①xian(root.right)还没有执行到,后面会调用①</li>
+<li>继续执行,又会执行(2)xian(root.left) root = {root: null}</li>
+<li>执行(2) 会直接return 函数调用栈会弹出(2),然后又会往函数调用栈里push一个函数 ②xian(root.right) 由于root = null 也直接return</li>
+<li>……….就一直压栈,出栈,可以利用goole的调试工具细看,实在是描述不出来……</li>
+</ol>
 
          
         
@@ -258,7 +230,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -270,7 +242,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        			<a href="/categories/简单//" class="article-tag-list-link color3">简单</a>
         		</li>
       		
 		</ul>
@@ -325,7 +297,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/08/22/var-let-coinst%E5%8C%BA%E5%88%AB/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/10/15/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -339,18 +311,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/08/22/Proxy-API/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Proxy API
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/08/22/vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%93%8D%E5%BA%94%E5%BC%8F%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">vue3响应式原理及实现一个响应式函数</div>
+    <a href="/2021/10/10/git%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git项目与远程仓库</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -377,7 +340,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-var"><span class="toc-number">1.</span> <span class="toc-text">一.var</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-let"><span class="toc-number">2.</span> <span class="toc-text">二.let</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81const"><span class="toc-number"></span> <span class="toc-text">三、const</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%8C%BA%E5%88%AB"><span class="toc-number"></span> <span class="toc-text">四、区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">使用</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86-%E9%80%92%E5%BD%92%E7%89%88"><span class="toc-number">1.</span> <span class="toc-text">二叉树的遍历(递归版)</span></a></li></ol>
                     </div>
                 </span>
             </div>

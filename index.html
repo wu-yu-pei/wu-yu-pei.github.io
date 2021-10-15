@@ -152,6 +152,130 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-树的深度优先遍历" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/15/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/">树的深度优先遍历</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/15/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/" class="archive-article-date">
+  	<time datetime="2021-10-15T10:56:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+         
+         <h4 id="二叉树的遍历-递归版"><a href="#二叉树的遍历-递归版" class="headerlink" title="二叉树的遍历(递归版)"></a>二叉树的遍历(递归版)</h4><p>一个树结构:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tree = &#123;</span><br><span class="line">        <span class="attr">value</span>: <span class="number">3</span>,</span><br><span class="line">        <span class="attr">left</span>: &#123;</span><br><span class="line">            <span class="attr">value</span>: <span class="number">9</span>,</span><br><span class="line">            <span class="attr">left</span>: <span class="literal">null</span>,</span><br><span class="line">            <span class="attr">right</span>: <span class="literal">null</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">right</span>: &#123;</span><br><span class="line">            <span class="attr">value</span>: <span class="number">20</span>,</span><br><span class="line">            <span class="attr">left</span>: &#123;</span><br><span class="line">                <span class="attr">value</span>: <span class="number">15</span>,</span><br><span class="line">                <span class="attr">left</span>: <span class="literal">null</span>,</span><br><span class="line">                <span class="attr">right</span>: <span class="literal">null</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">right</span>: &#123;</span><br><span class="line">                <span class="attr">value</span>: <span class="number">7</span>,</span><br><span class="line">                <span class="attr">left</span>: <span class="literal">null</span>,</span><br><span class="line">                <span class="attr">right</span>: <span class="literal">null</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>先序遍历(根 左 右)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">xian</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">if</span> (!root) <span class="keyword">return</span></span><br><span class="line">           <span class="built_in">console</span>.log(root.value)</span><br><span class="line">           xian(root.left)</span><br><span class="line">           xian(root.right)</span><br><span class="line">       &#125;</span><br><span class="line">       xian(tree) <span class="comment">// 3 9 20 15 7</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li>中序遍历(左 根 右)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">xian</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">if</span> (!root) <span class="keyword">return</span></span><br><span class="line">           xian(root.left)</span><br><span class="line">           <span class="built_in">console</span>.log(root.value)</span><br><span class="line">           xian(root.right)</span><br><span class="line">       &#125;</span><br><span class="line">       xian(tree)<span class="comment">// 9 3 15 20 7</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="3">
+<li>后续遍历(左 右 根)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">xian</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!root) <span class="keyword">return</span></span><br><span class="line">            xian(root.left)</span><br><span class="line">            xian(root.right)</span><br><span class="line">            <span class="built_in">console</span>.log(root.value)</span><br><span class="line">        &#125;</span><br><span class="line">        xian(tree) <span class="comment">// 9 15 20 7 3</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>通过二叉树的先序遍历对递归的理解:</p>
+<ol>
+<li>给调用函数的地方打上断点</li>
+</ol>
+<p><img src="/2021/10/15/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/01.png"></p>
+<ol start="2">
+<li>点击执行一步</li>
+<li>此时函数调用栈中有一个xian函数,参数的值:root={left: {value: 9, left: null, right: null}right: {value: 20, left: {…}, right: {…}}value: 3}</li>
+<li>函数执行到699行,又会往函数调用栈里面push一个(1)xian(root.left) root= {left: null,right: null,value: 9},但是上一个函数还没有执行完,①xian(root.right)还没有执行到,后面会调用①</li>
+<li>继续执行,又会执行(2)xian(root.left) root = {root: null}</li>
+<li>执行(2) 会直接return 函数调用栈会弹出(2),然后又会往函数调用栈里push一个函数 ②xian(root.right) 由于root = null 也直接return</li>
+<li>……….就一直压栈,出栈,可以利用goole的调试工具细看,实在是描述不出来……</li>
+</ol>
+
+         
+        
+        
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/简单//" class="article-tag-list-link color3">简单</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/15/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-git项目与远程仓库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -507,96 +631,9 @@
 
 
   
-    <article id="post-json跨域原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/02/json%E8%B7%A8%E5%9F%9F%E5%8E%9F%E7%90%86/">json跨域原理</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/02/json%E8%B7%A8%E5%9F%9F%E5%8E%9F%E7%90%86/" class="archive-article-date">
-  	<time datetime="2021-09-02T08:00:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          <h3 id="jsonp跨域"><a href="#jsonp跨域" class="headerlink" title="jsonp跨域"></a>jsonp跨域</h3><p>原理:</p>
-<p>​            1.首先要知道script标签 的src属性不会收浏览去的同源策略限制</p>
-<p>​            2.通过在script标签中写请求地址,相关参数,服务端开始 返回相关数据</p>
-<p>​            3.客户端在全局作用域里声明好相关函数,即可跨域</p>
-         
-        
-        
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jsonp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/跨域//" class="article-tag-list-link color3">跨域</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/02/json%E8%B7%A8%E5%9F%9F%E5%8E%9F%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
     </nav>
   
 
@@ -708,6 +745,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">VUE3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
