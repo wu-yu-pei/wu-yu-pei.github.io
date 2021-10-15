@@ -172,47 +172,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-         
-         <h4 id="二叉树的遍历-递归版"><a href="#二叉树的遍历-递归版" class="headerlink" title="二叉树的遍历(递归版)"></a>二叉树的遍历(递归版)</h4><p>一个树结构:</p>
+          <h4 id="二叉树的遍历-递归版"><a href="#二叉树的遍历-递归版" class="headerlink" title="二叉树的遍历(递归版)"></a>二叉树的遍历(递归版)</h4><p>一个树结构:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tree = &#123;</span><br><span class="line">        <span class="attr">value</span>: <span class="number">3</span>,</span><br><span class="line">        <span class="attr">left</span>: &#123;</span><br><span class="line">            <span class="attr">value</span>: <span class="number">9</span>,</span><br><span class="line">            <span class="attr">left</span>: <span class="literal">null</span>,</span><br><span class="line">            <span class="attr">right</span>: <span class="literal">null</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">right</span>: &#123;</span><br><span class="line">            <span class="attr">value</span>: <span class="number">20</span>,</span><br><span class="line">            <span class="attr">left</span>: &#123;</span><br><span class="line">                <span class="attr">value</span>: <span class="number">15</span>,</span><br><span class="line">                <span class="attr">left</span>: <span class="literal">null</span>,</span><br><span class="line">                <span class="attr">right</span>: <span class="literal">null</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">right</span>: &#123;</span><br><span class="line">                <span class="attr">value</span>: <span class="number">7</span>,</span><br><span class="line">                <span class="attr">left</span>: <span class="literal">null</span>,</span><br><span class="line">                <span class="attr">right</span>: <span class="literal">null</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>先序遍历(根 左 右)</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">xian</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">if</span> (!root) <span class="keyword">return</span></span><br><span class="line">           <span class="built_in">console</span>.log(root.value)</span><br><span class="line">           xian(root.left)</span><br><span class="line">           xian(root.right)</span><br><span class="line">       &#125;</span><br><span class="line">       xian(tree) <span class="comment">// 3 9 20 15 7</span></span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="2">
-<li>中序遍历(左 根 右)</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">xian</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">if</span> (!root) <span class="keyword">return</span></span><br><span class="line">           xian(root.left)</span><br><span class="line">           <span class="built_in">console</span>.log(root.value)</span><br><span class="line">           xian(root.right)</span><br><span class="line">       &#125;</span><br><span class="line">       xian(tree)<span class="comment">// 9 3 15 20 7</span></span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="3">
-<li>后续遍历(左 右 根)</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">xian</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!root) <span class="keyword">return</span></span><br><span class="line">            xian(root.left)</span><br><span class="line">            xian(root.right)</span><br><span class="line">            <span class="built_in">console</span>.log(root.value)</span><br><span class="line">        &#125;</span><br><span class="line">        xian(tree) <span class="comment">// 9 15 20 7 3</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p>通过二叉树的先序遍历对递归的理解:</p>
-<ol>
-<li>给调用函数的地方打上断点</li>
-</ol>
-<p><img src="/2021/10/15/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/01.png"></p>
-<ol start="2">
-<li>点击执行一步</li>
-<li>此时函数调用栈中有一个xian函数,参数的值:root={left: {value: 9, left: null, right: null}right: {value: 20, left: {…}, right: {…}}value: 3}</li>
-<li>函数执行到699行,又会往函数调用栈里面push一个(1)xian(root.left) root= {left: null,right: null,value: 9},但是上一个函数还没有执行完,①xian(root.right)还没有执行到,后面会调用①</li>
-<li>继续执行,又会执行(2)xian(root.left) root = {root: null}</li>
-<li>执行(2) 会直接return 函数调用栈会弹出(2),然后又会往函数调用栈里push一个函数 ②xian(root.right) 由于root = null 也直接return</li>
-<li>……….就一直压栈,出栈,可以利用goole的调试工具细看,实在是描述不出来……</li>
-</ol>
-
          
         
         
