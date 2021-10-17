@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021 | 小吴的Blog</title>
+  <title>每日算法 | 小吴的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="小吴的Blog">
-<meta property="og:url" content="http://example.com/archives/2021/page/3/index.html">
+  <meta name="description" content="461. 汉明距离两个整数之间的 汉明距离 指的是这两个数字对应二进制位不同的位置的数目。 给你两个整数 x 和 y，计算并返回它们之间的汉明距离。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每日算法">
+<meta property="og:url" content="http://example.com/2021/10/17/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="小吴的Blog">
+<meta property="og:description" content="461. 汉明距离两个整数之间的 汉明距离 指的是这两个数字对应二进制位不同的位置的数目。 给你两个整数 x 和 y，计算并返回它们之间的汉明距离。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-17T15:06:46.000Z">
+<meta property="article:modified_time" content="2021-10-17T15:11:05.000Z">
 <meta property="article:author" content="Growing">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="小吴的Blog" type="application/atom+xml">
@@ -150,97 +155,68 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-每日算法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      每日算法
+    </h1>
+  
+
+        
+        <a href="/2021/10/17/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2021-10-17T15:06:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-17</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+         
+         <h4 id="461-汉明距离"><a href="#461-汉明距离" class="headerlink" title="461. 汉明距离"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/hamming-distance/">461. 汉明距离</a></h4><p>两个整数之间的 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB">汉明距离</a> 指的是这两个数字对应二进制位不同的位置的数目。</p>
+<p>给你两个整数 <code>x</code> 和 <code>y</code>，计算并返回它们之间的汉明距离。</p>
+ <span id="more"></span>
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：x = 1, y = 4</span><br><span class="line">输出：2</span><br><span class="line">解释：</span><br><span class="line">1   (0 0 0 1)</span><br><span class="line">4   (0 1 0 0)</span><br><span class="line">       ↑   ↑</span><br><span class="line">上面的箭头指出了对应二进制位不同的位置。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：x = 3, y = 1</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">x</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">y</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> hammingDistance = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _xarr = x.toString(<span class="number">2</span>).split(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">var</span> _yarr = y.toString(<span class="number">2</span>).split(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">var</span> _xlen = _xarr.length</span><br><span class="line">    <span class="keyword">var</span> _ylen = _yarr.length</span><br><span class="line">    <span class="keyword">var</span> res = <span class="number">0</span></span><br><span class="line">    <span class="comment">//统一长度</span></span><br><span class="line">    <span class="keyword">var</span> len = <span class="built_in">Math</span>.max(_xarr.length,_yarr.length)</span><br><span class="line">    <span class="keyword">if</span>(_xlen &lt; len) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; len - _xlen; i++) &#123;</span><br><span class="line">            _xarr.unshift(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(_ylen &lt; len) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>;j &lt; len - _ylen; j++) &#123;</span><br><span class="line">            _yarr.unshift(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> k = <span class="number">0</span>; k &lt; len; k++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(_xarr[k] !== _yarr[k]) &#123;</span><br><span class="line">            res+=<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//我学到了 arr.unshift()  返回数组的长度  arr.join(&#x27;-&#x27;) 返回一个新的字符串 原数组不会改变</span></span><br><span class="line"><span class="comment">//提交了5次才正确,呜呜呜....</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="617-合并二叉树"><a href="#617-合并二叉树" class="headerlink" title="617. 合并二叉树"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-two-binary-trees/">617. 合并二叉树</a></h4><p>给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。</p>
+<p>你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则<strong>不为</strong> NULL 的节点将直接作为新二叉树的节点。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">	Tree 1                     Tree 2                  </span><br><span class="line">          1                         2                             </span><br><span class="line">         / \                       / \                            </span><br><span class="line">        3   2                     1   3                        </span><br><span class="line">       /                           \   \                      </span><br><span class="line">      5                             4   7                  </span><br><span class="line">输出: </span><br><span class="line">合并后的树:</span><br><span class="line">	     3</span><br><span class="line">	    / \</span><br><span class="line">	   4   5</span><br><span class="line">	  / \   \ </span><br><span class="line">	 5   4   7</span><br></pre></td></tr></table></figure>
+
+<p><strong>我的代码:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * function TreeNode(val, left, right) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = (val===undefined ? 0 : val)</span></span><br><span class="line"><span class="comment"> *     this.left = (left===undefined ? null : left)</span></span><br><span class="line"><span class="comment"> *     this.right = (right===undefined ? null : right)</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;TreeNode&#125;</span> <span class="variable">root1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;TreeNode&#125;</span> <span class="variable">root2</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;TreeNode&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> mergeTrees = <span class="function"><span class="keyword">function</span>(<span class="params">root1, root2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!root1) &#123;</span><br><span class="line">        <span class="keyword">return</span> root2</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!root2) &#123;</span><br><span class="line">        <span class="keyword">return</span> root1</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">val</span>: root1?.val + root2?.val,</span><br><span class="line">        <span class="attr">left</span>:mergeTrees(root1?.left,root2?.left),</span><br><span class="line">        <span class="attr">right</span>:mergeTrees(root1?.right,root2?.right)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">                         </span><br><span class="line"><span class="comment">//递归递归 马马虎虎的写出来了</span></span><br></pre></td></tr></table></figure>
+
+
+         
+        
+        
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/23/node%E4%B8%ADkoa%E7%9A%84%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2021-08-23T06:47:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/23/node%E4%B8%ADkoa%E7%9A%84%E4%BD%BF%E7%94%A8/">node中koa的使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端//" class="article-tag-list-link color3">后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/23/leetcode-496%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/" class="archive-article-date">
-  	<time datetime="2021-08-23T03:48:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/23/leetcode-496%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/">leetcode 496下一个更大元素</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -253,414 +229,117 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/10/17/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/23/leetcode-155%E6%9C%80%E5%B0%8F%E6%A0%88/" class="archive-article-date">
-  	<time datetime="2021-08-23T03:09:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-23</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/10/15/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">树的深度优先遍历</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/23/leetcode-155%E6%9C%80%E5%B0%8F%E6%A0%88/">leetcode 155最小栈</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#461-%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB"><span class="toc-number">1.</span> <span class="toc-text">461. 汉明距离</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#617-%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">2.</span> <span class="toc-text">617. 合并二叉树</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/23/leecode-1646%E8%8E%B7%E5%8F%96%E7%94%9F%E6%88%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" class="archive-article-date">
-  	<time datetime="2021-08-23T02:55:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/23/leecode-1646%E8%8E%B7%E5%8F%96%E7%94%9F%E6%88%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/">leecode 1646获取生成数组的最大值</a>
-    </h1>
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/23/leetcode-%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7/" class="archive-article-date">
-  	<time datetime="2021-08-23T02:25:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/23/leetcode-%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7/">leetcode 有效括号</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/22/%E5%88%86%E4%BA%AB%E5%87%A0%E5%BC%A0%E5%9B%BE%E7%89%87/" class="archive-article-date">
-  	<time datetime="2021-08-22T11:08:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/22/%E5%88%86%E4%BA%AB%E5%87%A0%E5%BC%A0%E5%9B%BE%E7%89%87/">分享几张图片</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">壁纸</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/图片//" class="article-tag-list-link color3">图片</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/22/javascript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" class="archive-article-date">
-  	<time datetime="2021-08-22T10:14:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/22/javascript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/">javascript执行上下文</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/22/Proxy-API/" class="archive-article-date">
-  	<time datetime="2021-08-22T04:45:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/22/Proxy-API/">Proxy API</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/22/var-let-coinst%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2021-08-22T04:27:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/22/var-let-coinst%E5%8C%BA%E5%88%AB/">var,let,coinst区别</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/22/vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%93%8D%E5%BA%94%E5%BC%8F%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2021-08-22T03:56:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/22/vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%93%8D%E5%BA%94%E5%BC%8F%E5%87%BD%E6%95%B0/">vue3响应式原理及实现一个响应式函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">VUE3</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2021/page/2/">上一页</a><a class="page-number" href="/archives/2021/">1</a><a class="page-number" href="/archives/2021/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2021/page/4/">4</a><a class="extend next" rel="next" href="/archives/2021/page/4/">下一页</a>
-    </nav>
-  
-
 
 
           </div>
@@ -683,8 +362,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
