@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>git项目与远程仓库 | 小吴的Blog</title>
+  <title>vue3响应式原理(一) | 小吴的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在github上创建一个空的仓库 赋值code地址 在已创建好的项目根目录执行命令git add .  git commit -m&#39;&#39; 然后 git push 地址  如: git push https:&#x2F;&#x2F;github.com&#x2F;wu-yu-pei&#x2F;xiaotuxian-shop 刷新github网址 就可以看到已经提交上去了">
+  <meta name="description" content="马马虎虎写的vue3响应式原理,后续继续改进,记录一下手写过程 知识点: Proxy Reflect  map weakmap ….">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git项目与远程仓库">
-<meta property="og:url" content="http://example.com/2021/10/10/git%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/index.html">
+<meta property="og:title" content="vue3响应式原理(一)">
+<meta property="og:url" content="http://example.com/2021/10/23/vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86-%E4%B8%80/index.html">
 <meta property="og:site_name" content="小吴的Blog">
-<meta property="og:description" content="在github上创建一个空的仓库 赋值code地址 在已创建好的项目根目录执行命令git add .  git commit -m&#39;&#39; 然后 git push 地址  如: git push https:&#x2F;&#x2F;github.com&#x2F;wu-yu-pei&#x2F;xiaotuxian-shop 刷新github网址 就可以看到已经提交上去了">
+<meta property="og:description" content="马马虎虎写的vue3响应式原理,后续继续改进,记录一下手写过程 知识点: Proxy Reflect  map weakmap ….">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-10T13:31:49.000Z">
-<meta property="article:modified_time" content="2021-10-10T13:42:24.104Z">
+<meta property="article:published_time" content="2021-10-23T09:38:25.000Z">
+<meta property="article:modified_time" content="2021-10-23T09:42:45.593Z">
 <meta property="article:author" content="Growing">
-<meta property="article:tag" content="git">
+<meta property="article:tag" content="vue3">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="小吴的Blog" type="application/atom+xml">
@@ -155,20 +155,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-git项目与远程仓库" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-vue3响应式原理-一" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      git项目与远程仓库
+      vue3响应式原理(一)
     </h1>
   
 
         
-        <a href="/2021/10/10/git%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/" class="archive-article-date">
-  	<time datetime="2021-10-10T13:31:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-10</time>
+        <a href="/2021/10/23/vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86-%E4%B8%80/" class="archive-article-date">
+  	<time datetime="2021-10-23T09:38:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-23</time>
 </a>
         
       </header>
@@ -176,24 +176,15 @@
     <div class="article-entry" itemprop="articleBody">
       
          
-         <ul>
-<li>在github上创建一个空的仓库</li>
-<li>赋值code地址</li>
-<li>在已创建好的项目根目录执行命令<code>git add .</code>  <code>git commit -m&#39;&#39;</code></li>
-<li>然后 <code>git push 地址 </code> 如: git push <a target="_blank" rel="noopener" href="https://github.com/wu-yu-pei/xiaotuxian-shop">https://github.com/wu-yu-pei/xiaotuxian-shop</a></li>
-<li>刷新github网址 就可以看到已经提交上去了</li>
-</ul>
+         <blockquote>
+<p>马马虎虎写的vue3响应式原理,后续继续改进,记录一下手写过程</p>
+<p>知识点: Proxy Reflect  map weakmap …. </p>
+</blockquote>
 <span id="more"></span>
 
-<p>另个配置:</p>
-<ul>
-<li>git remote add <name> <url>  如: git remote add origin ‘<a target="_blank" rel="noopener" href="https://github.com/wu-yu-pei/xiaotuxian-shop.git&#39;">https://github.com/wu-yu-pei/xiaotuxian-shop.git&#39;</a>     //如果不配置 每一次push都需要填一次地址</url></name></li>
-<li>使用 git push origin  命令来push</li>
-</ul>
-<p>注意:</p>
-<ul>
-<li>在使用git push origin需要指明分支(看你自己情况) 如: git push origin master</li>
-</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;vue3响应式原理初探索&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // </span><br><span class="line">        var person = &#123;</span><br><span class="line">            name: &#x27;wuyupei&#x27;,</span><br><span class="line">            age: 20</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        var student = &#123;</span><br><span class="line">            name: &#x27;小红&#x27;,</span><br><span class="line">            age: 15</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        class Depence &#123;</span><br><span class="line">            constructor() &#123;</span><br><span class="line">                this.Funs = []</span><br><span class="line">            &#125;</span><br><span class="line">            add(fn) &#123;</span><br><span class="line">                this.Funs.push(fn)</span><br><span class="line">            &#125;</span><br><span class="line">            notify() &#123;</span><br><span class="line">                this.Funs.forEach(item =&gt; item())</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // person对象属性发送改变需要执行的函数</span><br><span class="line">        function funp1() &#123;</span><br><span class="line">            console.log(&#x27;我是person需要执行的函数一&#x27;)</span><br><span class="line">        &#125;</span><br><span class="line">        function funp2() &#123;</span><br><span class="line">            console.log(&#x27;我是person需要执行的函数二&#x27;)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // student对象属性发生改变需要执行的函数</span><br><span class="line">        function funs1() &#123;</span><br><span class="line">            console.log(&#x27;我是student需要执行的函数&#x27;)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        // person的代理对象</span><br><span class="line">        var personProxy = new Proxy(person, &#123;</span><br><span class="line">            get(target, key, service) &#123;</span><br><span class="line">                return Reflect.get(target, key, service)</span><br><span class="line">            &#125;,</span><br><span class="line">            set(target, key, newvalue, sercice) &#123;</span><br><span class="line">                //这里需要执行相关函数</span><br><span class="line">                getFuns(target, key).notify()</span><br><span class="line">                Reflect.set(target, key, newvalue, sercice)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // student的代理对象</span><br><span class="line">        var studentProxy = new Proxy(person, &#123;</span><br><span class="line">            get(target, key, service) &#123;</span><br><span class="line">                //需要执行相关函数</span><br><span class="line">                return Reflect.get(target, key, service)</span><br><span class="line">            &#125;,</span><br><span class="line">            set(target, key, newvalue, sercice) &#123;</span><br><span class="line">                Reflect.set(target, key, newvalue, sercice)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        var _dep = new Depence()</span><br><span class="line"></span><br><span class="line">        //把p1对象函数 add进依赖里面</span><br><span class="line">        _dep.add(funp1)</span><br><span class="line">        _dep.add(funp2)</span><br><span class="line"></span><br><span class="line">        // weakmap数据结构 整理数据之间的关系</span><br><span class="line">        var wmap = new WeakMap()</span><br><span class="line"></span><br><span class="line">        function getFuns(target, key) &#123;</span><br><span class="line">            let targetmap = wmap.get(target)</span><br><span class="line"></span><br><span class="line">            if (!targetmap) &#123;</span><br><span class="line">                targetmap = new Map()</span><br><span class="line">                wmap.set(target, targetmap)</span><br><span class="line">            &#125;</span><br><span class="line">            let dep = targetmap.get(key)</span><br><span class="line">            if (!dep) &#123;</span><br><span class="line">                dep = _dep</span><br><span class="line">                targetmap.set(key, _dep)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return dep</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //person和student对象属性发生改变 ---&gt; 需要执行上面的两个函数</span><br><span class="line">        personProxy.name = &#x27;liuxu&#x27;</span><br><span class="line">        personProxy.age = 11</span><br><span class="line">        // personProxy.name = &#x27;lisiyuan&#x27;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>后续还有哦<del>还没写完</del></p>
 
          
         
@@ -207,7 +198,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">vue3</a>
         		</li>
       		
 		</ul>
@@ -219,7 +210,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
+        			<a href="/categories/vue3//" class="article-tag-list-link color5">vue3</a>
         		</li>
       		
 		</ul>
@@ -274,7 +265,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/10/10/git%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/10/23/vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86-%E4%B8%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -288,18 +279,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/10/15/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          树的深度优先遍历
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/10/05/js%E7%BB%A7%E6%89%BF%E7%9A%846%E7%A7%8D%E6%96%B9%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">js继承的6种方式</div>
+    <a href="/2021/10/22/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每日算法</div>
       <i class="icon-circle-right"></i>
     </a>
   
