@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>每日算法 | 小吴的Blog</title>
+  <title>使用数据结构简单模拟进程的创建|销毁|阻塞|唤醒 | 小吴的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="二叉树的层序遍历 现在我们要做的是对这个二叉树进行层序遍历。层序遍历的概念很好理解：按照层次的顺序，从上到下，从左到右地遍历一个二叉树">
+  <meta name="description" content="使用数据结构模拟操作系统中进程的状态转换 手写需要创建一个PCB链表 由于jsvascript中没有链表数据结构 需要手动自己封装一个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="每日算法">
-<meta property="og:url" content="http://example.com/2021/10/25/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95-5/index.html">
+<meta property="og:title" content="使用数据结构简单模拟进程的创建|销毁|阻塞|唤醒">
+<meta property="og:url" content="http://example.com/2021/11/06/%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%80%E5%8D%95%E6%A8%A1%E6%8B%9F%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA-%E9%94%80%E6%AF%81-%E9%98%BB%E5%A1%9E-%E5%94%A4%E9%86%92/index.html">
 <meta property="og:site_name" content="小吴的Blog">
-<meta property="og:description" content="二叉树的层序遍历 现在我们要做的是对这个二叉树进行层序遍历。层序遍历的概念很好理解：按照层次的顺序，从上到下，从左到右地遍历一个二叉树">
+<meta property="og:description" content="使用数据结构模拟操作系统中进程的状态转换 手写需要创建一个PCB链表 由于jsvascript中没有链表数据结构 需要手动自己封装一个">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-25T10:32:39.000Z">
-<meta property="article:modified_time" content="2021-10-25T10:37:20.050Z">
+<meta property="article:published_time" content="2021-11-06T07:25:28.000Z">
+<meta property="article:modified_time" content="2021-11-06T07:43:46.575Z">
 <meta property="article:author" content="Growing">
-<meta property="article:tag" content="算法">
+<meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="小吴的Blog" type="application/atom+xml">
@@ -155,20 +155,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-每日算法-5" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-使用数据结构简单模拟进程的创建-销毁-阻塞-唤醒" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      每日算法
+      使用数据结构简单模拟进程的创建|销毁|阻塞|唤醒
     </h1>
   
 
         
-        <a href="/2021/10/25/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95-5/" class="archive-article-date">
-  	<time datetime="2021-10-25T10:32:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-25</time>
+        <a href="/2021/11/06/%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%80%E5%8D%95%E6%A8%A1%E6%8B%9F%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA-%E9%94%80%E6%AF%81-%E9%98%BB%E5%A1%9E-%E5%94%A4%E9%86%92/" class="archive-article-date">
+  	<time datetime="2021-11-06T07:25:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-06</time>
 </a>
         
       </header>
@@ -176,20 +176,57 @@
     <div class="article-entry" itemprop="articleBody">
       
          
-         <h3 id="二叉树的层序遍历"><a href="#二叉树的层序遍历" class="headerlink" title="二叉树的层序遍历"></a>二叉树的层序遍历</h3><blockquote>
-<p>现在我们要做的是对这个二叉树进行层序遍历。层序遍历的概念很好理解：按照层次的顺序，从上到下，从左到右地遍历一个二叉树</p>
-</blockquote>
+         <h3 id="使用数据结构模拟操作系统中进程的状态转换"><a href="#使用数据结构模拟操作系统中进程的状态转换" class="headerlink" title="使用数据结构模拟操作系统中进程的状态转换"></a>使用数据结构模拟操作系统中进程的状态转换</h3><ol>
+<li>手写需要创建一个PCB链表</li>
+<li>由于jsvascript中没有链表数据结构 需要手动自己封装一个</li>
+</ol>
 <span id="more"></span>
 
-<ul>
-<li><p>模拟一个二叉树</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> root = &#123;</span><br><span class="line">            <span class="attr">val</span>: <span class="string">&quot;A&quot;</span>,</span><br><span class="line">            <span class="attr">left</span>: &#123;</span><br><span class="line">                <span class="attr">val</span>: <span class="string">&quot;B&quot;</span>,</span><br><span class="line">                <span class="attr">left</span>: &#123;</span><br><span class="line">                    <span class="attr">val</span>: <span class="string">&quot;D&quot;</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">right</span>: &#123;</span><br><span class="line">                    <span class="attr">val</span>: <span class="string">&quot;E&quot;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">right</span>: &#123;</span><br><span class="line">                <span class="attr">val</span>: <span class="string">&quot;C&quot;</span>,</span><br><span class="line">                <span class="attr">right</span>: &#123;</span><br><span class="line">                    <span class="attr">val</span>: <span class="string">&quot;F&quot;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure></li>
-<li><p>开始遍历(每层从左到右一次访问)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BFS</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 数组模拟队列</span></span><br><span class="line">        <span class="keyword">const</span> queue = []</span><br><span class="line">        <span class="comment">// 先把root入队</span></span><br><span class="line">        queue.push(root)</span><br><span class="line">        <span class="keyword">while</span>(queue.length) &#123;</span><br><span class="line">            <span class="comment">//取出队列顶元素</span></span><br><span class="line">            <span class="keyword">const</span> top = queue[<span class="number">0</span>]</span><br><span class="line">            <span class="comment">//访问值</span></span><br><span class="line">            <span class="built_in">console</span>.log(top.val);</span><br><span class="line">            <span class="keyword">if</span>(top.left) &#123;</span><br><span class="line">                queue.push(top.left)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(top.right) &#123;</span><br><span class="line">                queue.push(top.right)</span><br><span class="line">            &#125;</span><br><span class="line">            queue.shift()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">    BFS(root)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 链表数据结构List</span></span><br><span class="line"><span class="comment"> * 由于node.js中没有链表数据结构，需要自己封装</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">List</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.head = <span class="literal">null</span></span><br><span class="line">        <span class="built_in">this</span>.length = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// append 向链表中添加元素</span></span><br><span class="line">    <span class="function"><span class="title">apppend</span>(<span class="params">val</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> newNode = <span class="keyword">new</span> Node(val)</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">this</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">this</span>.head = newNode            </span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> current = <span class="built_in">this</span>.head</span><br><span class="line">            <span class="keyword">while</span>(current.next) &#123;</span><br><span class="line">                current = current.next</span><br><span class="line">            &#125;</span><br><span class="line">            current.next = newNode</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.length += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * List中每一项的数据类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">data</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.data = data</span><br><span class="line">        <span class="built_in">this</span>.next = <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>​</p>
-</li>
-</ul>
+<ol start="3">
+<li>有了链表数据结构就可以创建PCB链表了</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建PCB链表</span></span><br><span class="line"><span class="keyword">let</span> pcbList = <span class="keyword">new</span> List()</span><br><span class="line"><span class="comment">// 给PCB链表中随便添加几个空位置</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i  &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    pcbList.apppend(<span class="literal">null</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 此时pcb链表里有10个元素 而且都是空的 当创建进程使 就可以把进程添加进pcb链表中了</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>操作系统中的两个队列,这里使用数组来模拟,也可以使用Queue数据结构(只不过javascript本身没有这种数据结构,也同样需要自己模拟)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 等待队列</span></span><br><span class="line"><span class="keyword">let</span> waitQueue = []</span><br><span class="line"><span class="comment">// 就绪队列</span></span><br><span class="line"><span class="keyword">let</span> readyQueue = []</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>模拟创建进程 此时需要遍历PCB链表 看是否有空的位置可以添加进程,如果有就创建进程,并把该进程添加到就绪队列里面,返回该进程的id号,没有返回创建失败(暂时没做)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建一个进程 并返回该进程id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="variable">pcbid</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">create</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> current = pcbList.head</span><br><span class="line">    <span class="comment">// 遍历PCB链表 </span></span><br><span class="line">    <span class="keyword">while</span>(current) &#123;</span><br><span class="line">        <span class="comment">// 遇到空</span></span><br><span class="line">        <span class="keyword">if</span>(current.data == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 初始化相关数据 进程id 进程状态status:ready 就绪状态</span></span><br><span class="line">            current.data = &#123;</span><br><span class="line">                <span class="attr">pcbid</span>: random(),</span><br><span class="line">                <span class="attr">status</span>: <span class="string">&#x27;ready&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 入就绪队列</span></span><br><span class="line">            readyQueue.push(current)</span><br><span class="line">            <span class="keyword">return</span> current.data.pcbid</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            current = current.next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>删除进程(给出一个进程的id号,从pcb链表种删除该进程并查询此进程是否在等待队列和就绪队列里,如果在,也要从队列种删除,删除成功返回true,否则返回false)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 传入一个pcbid  从PCB链表中删除该进程</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">pcbid</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="variable">Boolean</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">remove</span>(<span class="params">pcbid</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> current = pcbList.head</span><br><span class="line">    <span class="comment">// 遍历PCB链表 </span></span><br><span class="line">    <span class="keyword">while</span>(current) &#123;</span><br><span class="line">        <span class="comment">// 查询到此进程  这里没有判断是否存在子进程。</span></span><br><span class="line">        <span class="keyword">if</span>(current.data.pcbid == pcbid) &#123;</span><br><span class="line">            <span class="comment">// 如果等待队列 或者 就绪队列中也存在该进程，也同样需要删除</span></span><br><span class="line">            readyQueue = readyQueue.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.data.pcbid !== pcbid )</span><br><span class="line">            waitQueue =  waitQueue.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.data.pcbid !== pcbid)</span><br><span class="line">            <span class="comment">// 释放相关资源</span></span><br><span class="line">            current.data = <span class="literal">null</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            current = current.next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 没有找到此进程</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>阻塞某一个进程(给出进程号,把该进程转化为阻塞状态,并添加就等待队列种)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 传入pcbid 阻塞某个进程 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>Boolean </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">block</span>(<span class="params">pcbid</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//1. 保存当前cpu现场</span></span><br><span class="line">    <span class="comment">//2. 把该进程的状态  status 置换为 阻塞状态</span></span><br><span class="line">    <span class="comment">//2.1 先找到该进程</span></span><br><span class="line">    <span class="keyword">let</span> current = pcbList.head</span><br><span class="line">    <span class="comment">// 遍历PCB链表 </span></span><br><span class="line">    <span class="keyword">while</span>(current) &#123;</span><br><span class="line">        <span class="comment">// 查询到此进程</span></span><br><span class="line">        <span class="keyword">if</span>(current.data.pcbid == pcbid) &#123;</span><br><span class="line">            <span class="comment">// 置换状态 ready --&gt; block </span></span><br><span class="line">            current.status = <span class="string">&#x27;block&#x27;</span></span><br><span class="line">            <span class="comment">// 将该进程放进等待队列</span></span><br><span class="line">            waitQueue.push(current)</span><br><span class="line">            <span class="comment">// 还需要将ready队列里记录的此进程同时删除</span></span><br><span class="line">            readyQueue =  readyQueue.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.data.pcbid !== pcbid )</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            current = current.next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 没有找到此进程</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>唤醒某个进程(给出进程号,从等待队列里唤醒该队列,把该队列的状态改为就绪状态,并添加进就绪队列)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 传入pcbid 唤醒某个进程</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="variable">Boolean</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">weakeup</span>(<span class="params">pcbid</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 去等待队列里面找到该进程</span></span><br><span class="line">    <span class="keyword">let</span> _pcb = waitQueue.find(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> item.data.pcbid === pcbid</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 把该进程的status改为ready 并添加进readyQueue中</span></span><br><span class="line">    _pcb.data.status = <span class="string">&#x27;ready&#x27;</span></span><br><span class="line">    <span class="comment">// 从waitQueue中删除</span></span><br><span class="line">    waitQueue = waitQueue.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.data.pcbid !== pcbid)</span><br><span class="line">    <span class="comment">// 添加进readyQueue中</span></span><br><span class="line">    readyQueue.push(_pcb)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li>进程挂起(没有理解,暂时不太会写)</li>
+<li>进程释放(没有理解,暂时不太会写)</li>
+<li>工具函数(生成随机数用来表示进程号,进程和使不可以重复的)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * random 工具函数 生成随机数(0~100) 随机生成进程号</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="variable">Number</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">random</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.random() * <span class="number">100</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="12">
+<li>测试代码</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//test</span></span><br><span class="line"><span class="comment">//创建进程</span></span><br><span class="line"><span class="keyword">const</span> id1 =  create()</span><br><span class="line"><span class="keyword">const</span> id2 =  create()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除进程</span></span><br><span class="line"><span class="comment">// remove(id2)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//进程阻塞</span></span><br><span class="line">block(id2)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 唤醒进程</span></span><br><span class="line"><span class="comment">// weakeup(id2)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(pcbList);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;就绪队列:&#x27;</span>,readyQueue);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;等待队列&#x27;</span>,waitQueue);</span><br></pre></td></tr></table></figure>
+
+<p>大概就是这样…..</p>
 
          
         
@@ -203,7 +240,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
         		</li>
       		
 		</ul>
@@ -215,7 +252,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        			<a href="/categories/javascript//" class="article-tag-list-link color1">javascript</a>
         		</li>
       		
 		</ul>
@@ -270,7 +307,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/10/25/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95-5/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/11/06/%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%80%E5%8D%95%E6%A8%A1%E6%8B%9F%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA-%E9%94%80%E6%AF%81-%E9%98%BB%E5%A1%9E-%E5%94%A4%E9%86%92/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -284,18 +321,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/10/26/Promise%E7%9A%84%E5%B0%81%E8%A3%85%E4%BA%8C/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Promise的封装二
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/10/23/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95-4/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">每日算法</div>
+    <a href="/2021/11/05/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF-promise%E9%9D%A2%E8%AF%95%E9%A2%98%E5%88%86%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">事件循环,promise面试题分析</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -322,7 +350,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">1.</span> <span class="toc-text">二叉树的层序遍历</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E6%8B%9F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.</span> <span class="toc-text">使用数据结构模拟操作系统中进程的状态转换</span></a></li></ol>
                     </div>
                 </span>
             </div>
