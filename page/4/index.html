@@ -152,6 +152,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每日算法-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/23/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95-4/">每日算法</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/23/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95-4/" class="archive-article-date">
+  	<time datetime="2021-10-23T09:59:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          <h4 id="112-路径总和"><a href="#112-路径总和" class="headerlink" title="112. 路径总和"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/path-sum/">112. 路径总和</a></h4><p>给你二叉树的根节点 <code>root</code> 和一个表示目标和的整数 <code>targetSum</code> ，判断该树中是否存在 <strong>根节点到叶子节点</strong> 的路径，这条路径上所有节点值相加等于目标和 <code>targetSum</code> 。</p>
+<p><strong>叶子节点</strong> 是指没有子节点的节点。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22</span><br><span class="line">输出：true</span><br></pre></td></tr></table></figure>
+         
+        
+        
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/23/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95-4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-vue3响应式原理-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -518,96 +605,6 @@
 
 
   
-    <article id="post-vue自定义懒加载指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/19/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%87%92%E5%8A%A0%E8%BD%BD%E6%8C%87%E4%BB%A4/">vue自定义懒加载指令</a>
-    </h1>
-  
-
-        
-        <a href="/2021/10/19/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%87%92%E5%8A%A0%E8%BD%BD%E6%8C%87%E4%BB%A4/" class="archive-article-date">
-  	<time datetime="2021-10-19T13:05:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          <ul>
-<li>vue自定义指令的方式:</li>
-</ul>
-<ol>
-<li>全局注册</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = Vue.createApp(&#123;&#125;)</span><br><span class="line"><span class="comment">// 注册一个全局自定义指令 `v-focus`</span></span><br><span class="line">app.directive(<span class="string">&#x27;focus&#x27;</span>, &#123;</span><br><span class="line">  <span class="comment">// create() &#123;&#125;,</span></span><br><span class="line">  <span class="comment">// beforeMount() &#123;&#125;,</span></span><br><span class="line">  <span class="comment">// 当被绑定的元素挂载到 DOM 中时……</span></span><br><span class="line">  <span class="function"><span class="title">mounted</span>(<span class="params">el</span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 聚焦元素</span></span><br><span class="line">    el.focus()</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// unmounted() &#123;&#125;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-         
-        
-        
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/vue//" class="article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/19/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%87%92%E5%8A%A0%E8%BD%BD%E6%8C%87%E4%BB%A4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
@@ -806,6 +803,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">webpack5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CSS效果</a>
               </li>
             
             <div class="clearfix"></div>
