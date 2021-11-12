@@ -152,6 +152,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-git项目与远程仓库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/10/git%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/">git项目与远程仓库</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/10/git%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/" class="archive-article-date">
+  	<time datetime="2021-10-10T13:31:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          <ul>
+<li>在github上创建一个空的仓库</li>
+<li>赋值code地址</li>
+<li>在已创建好的项目根目录执行命令<code>git add .</code>  <code>git commit -m&#39;&#39;</code></li>
+<li>然后 <code>git push 地址 </code> 如: git push <a target="_blank" rel="noopener" href="https://github.com/wu-yu-pei/xiaotuxian-shop">https://github.com/wu-yu-pei/xiaotuxian-shop</a></li>
+<li>刷新github网址 就可以看到已经提交上去了</li>
+</ul>
+         
+        
+        
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/10/git%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-js继承的6种方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -504,99 +594,6 @@
 
 
   
-    <article id="post-预编译-作用域-作用域链-变量提升-函数提升-闭包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/01/%E9%A2%84%E7%BC%96%E8%AF%91-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87-%E5%87%BD%E6%95%B0%E6%8F%90%E5%8D%87-%E9%97%AD%E5%8C%85/">预编译 作用域 作用域链 变量提升 函数提升 闭包</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/01/%E9%A2%84%E7%BC%96%E8%AF%91-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87-%E5%87%BD%E6%95%B0%E6%8F%90%E5%8D%87-%E9%97%AD%E5%8C%85/" class="archive-article-date">
-  	<time datetime="2021-09-01T11:21:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          <h3 id="预编译"><a href="#预编译" class="headerlink" title="预编译"></a>预编译</h3><h3 id="G0-amp-Ao"><a href="#G0-amp-Ao" class="headerlink" title="G0 &amp; Ao"></a>G0 &amp; Ao</h3><hr>
-<p>GO: 页面创建后就会自动创建一个全局对象（Global Object)  </p>
-<pre><code> 浏览器环境里GO:window;node环境里GO:global
-</code></pre>
-<p>​    里面存放着许多原始的属性和方法(例如:Arrary;Date;console.log()…..)</p>
-<p>AO: 函数在执行前创建的活动对象 （Active Object）</p>
-         
-        
-        
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">作用域</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/01/%E9%A2%84%E7%BC%96%E8%AF%91-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87-%E5%87%BD%E6%95%B0%E6%8F%90%E5%8D%87-%E9%97%AD%E5%8C%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/">下一页</a>
@@ -799,6 +796,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CSS效果</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
             
             <div class="clearfix"></div>
