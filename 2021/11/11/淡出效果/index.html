@@ -16,8 +16,9 @@
 <meta property="og:description" content="getBoundingClientRect()今天发现一个好看的效果—&gt; 404页面 怎么样,效果挺好看吧! 我研究了研究  嘻嘻…  雕虫小计 看我的:alien: 在写效果之前,想认识一下今天的主角getBoundingClientRect():">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/11/11/%E6%B7%A1%E5%87%BA%E6%95%88%E6%9E%9C/b.gif">
+<meta property="og:image" content="http://example.com/2021/11/11/%E6%B7%A1%E5%87%BA%E6%95%88%E6%9E%9C/c.gif">
 <meta property="article:published_time" content="2021-11-11T08:19:21.000Z">
-<meta property="article:modified_time" content="2021-11-11T14:52:50.174Z">
+<meta property="article:modified_time" content="2021-11-14T12:47:43.531Z">
 <meta property="article:author" content="Growing">
 <meta property="article:tag" content="CSS效果">
 <meta name="twitter:card" content="summary">
@@ -193,6 +194,17 @@
 <p>代码写完了,看一下效果吧:</p>
 <p><img src="/2021/11/11/%E6%B7%A1%E5%87%BA%E6%95%88%E6%9E%9C/b.gif" alt="a"></p>
 <p>效果就是这样,还不错,录制gif的软件有点小问题</p>
+<p>2021/11/14 20:41 :</p>
+<p>又发现一个实现此效果的的高级api:IntersectionOBserver</p>
+<p>mdn地址:<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver">https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver</a></p>
+<p>使用:</p>
+<p>之前一篇笔记是关于使用此api自定义vue图片懒加载指令</p>
+<p>这次来来实现一下上面的效果:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//html还是上面的结构</span><br><span class="line">//script</span><br><span class="line">var lis = document.querySelectorAll(&#x27;li&#x27;)</span><br><span class="line">        for (let i = 0; i &lt; lis.length; i++) &#123;</span><br><span class="line">            const observer = new IntersectionObserver(([&#123; isIntersecting &#125;]) =&gt; &#123;</span><br><span class="line">                if(isIntersecting) &#123;</span><br><span class="line">                    observer.unobserve(lis[i])</span><br><span class="line">                    lis[i].className = &#x27;active&#x27;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                // 交叉多少开始加载 比列</span><br><span class="line">                threshold: 0.2</span><br><span class="line">            &#125;)</span><br><span class="line">            observer.observe(lis[i])</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果:</p>
+<p><img src="/2021/11/11/%E6%B7%A1%E5%87%BA%E6%95%88%E6%9E%9C/c.gif" alt="c"></p>
+<p>主要看效果哈,录屏软件有问题</p>
 
          
         
