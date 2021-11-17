@@ -16,12 +16,13 @@
 <meta property="og:description" content="三次握手分析 及 syn seq ack我画了图:">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/a.png">
+<meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/f.png">
 <meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/b.png">
 <meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/c.png">
 <meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/d.png">
 <meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/e.png">
 <meta property="article:published_time" content="2021-11-16T11:33:00.000Z">
-<meta property="article:modified_time" content="2021-11-16T11:47:22.665Z">
+<meta property="article:modified_time" content="2021-11-16T14:16:24.385Z">
 <meta property="article:author" content="Growing">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
@@ -186,11 +187,20 @@
 <p><img src="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/a.png" alt="a"></p>
 <span id="more"></span>
 
-<p>三次握手 数据包:</p>
+<p>三次握手过程:</p>
+<p><img src="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/f.png" alt="b"></p>
+<p>CLOSE: client 关闭状态</p>
+<p>LISTEN: server监听状态</p>
+<p>SYN-SENT:client 同步已发送</p>
+<p>SYN-RCVD:server 同步已发送</p>
+<p>ESTABLISHED:连接以确立</p>
+<p>三次握手 数据包:    </p>
 <p>①<img src="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/b.png" alt="b"></p>
 <p>②<img src="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/c.png" alt="c"></p>
 <p>③<img src="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/d.png" alt="d"></p>
-<p>④ </p>
+<p>前两次首部数据有32位   (首部20字节+option(12字节)) 看图可以看到</p>
+<p>因为前两次交换了相关数据,为可靠传输提供服务  </p>
+<p>④ 真正开始发送http请求</p>
 <p><img src="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/e.png" alt="e"></p>
 
          
@@ -285,6 +295,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2021/11/17/%E4%BB%8A%E6%97%A5%E6%89%8B%E5%86%99-3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          今日手写
+        
+      </div>
+    </a>
   
   
     <a href="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%89/" id="article-nav-older" class="article-nav-link-wrap">

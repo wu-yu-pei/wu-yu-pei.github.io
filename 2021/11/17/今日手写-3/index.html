@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>小吴的Blog</title>
+  <title>今日手写 | 小吴的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="小吴的Blog">
-<meta property="og:url" content="http://example.com/page/2/index.html">
+  <meta name="description" content="js中的改变this指向函数 apply bind call手写之前先看看call,apply,bind的使用和效果 1234567891011121314const Person &#x3D; &amp;#123;    name: &amp;#x27;wuyupei&amp;#x27;,    age: 20&amp;#125;function foo(a, b) &amp;#123;    console.log(a,b);    cons">
+<meta property="og:type" content="article">
+<meta property="og:title" content="今日手写">
+<meta property="og:url" content="http://example.com/2021/11/17/%E4%BB%8A%E6%97%A5%E6%89%8B%E5%86%99-3/index.html">
 <meta property="og:site_name" content="小吴的Blog">
+<meta property="og:description" content="js中的改变this指向函数 apply bind call手写之前先看看call,apply,bind的使用和效果 1234567891011121314const Person &#x3D; &amp;#123;    name: &amp;#x27;wuyupei&amp;#x27;,    age: 20&amp;#125;function foo(a, b) &amp;#123;    console.log(a,b);    cons">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-11-17T14:01:30.000Z">
+<meta property="article:modified_time" content="2021-11-17T14:07:35.970Z">
 <meta property="article:author" content="Growing">
+<meta property="article:tag" content="手写">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="小吴的Blog" type="application/atom+xml">
@@ -150,286 +155,51 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-淡出效果" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-今日手写-3" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/11/%E6%B7%A1%E5%87%BA%E6%95%88%E6%9E%9C/">淡出效果</a>
+    <h1 class="article-title" itemprop="name">
+      今日手写
     </h1>
   
 
         
-        <a href="/2021/11/11/%E6%B7%A1%E5%87%BA%E6%95%88%E6%9E%9C/" class="archive-article-date">
-  	<time datetime="2021-11-11T08:19:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-11</time>
+        <a href="/2021/11/17/%E4%BB%8A%E6%97%A5%E6%89%8B%E5%86%99-3/" class="archive-article-date">
+  	<time datetime="2021-11-17T14:01:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-          <h3 id="getBoundingClientRect"><a href="#getBoundingClientRect" class="headerlink" title="getBoundingClientRect()"></a>getBoundingClientRect()</h3><p>今天发现一个好看的效果—&gt; <a target="_blank" rel="noopener" href="https://error404.fun/">404页面</a></p>
-<p>怎么样,效果挺好看吧!</p>
-<p>我研究了研究  嘻嘻…  雕虫小计 看我的:alien:</p>
-<p>在写效果之前,想认识一下今天的主角getBoundingClientRect():</p>
          
-        
-        
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CSS效果</a>
-        		</li>
-      		
-		</ul>
-	</div>
+         <h3 id="js中的改变this指向函数-apply-bind-call"><a href="#js中的改变this指向函数-apply-bind-call" class="headerlink" title="js中的改变this指向函数 apply bind call"></a>js中的改变this指向函数 apply bind call</h3><p>手写之前先看看call,apply,bind的使用和效果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Person = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;wuyupei&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a,b);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.age);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// foo.call(Person,10, 30)</span></span><br><span class="line"><span class="comment">// foo.apply(Person, [10,30])</span></span><br><span class="line"><span class="comment">// foo.bind(Person,10)(20)</span></span><br><span class="line"><span class="comment">//结果 10 30 20</span></span><br></pre></td></tr></table></figure>
 
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CSS//" class="article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<span id="more"></span>
 
+<h4 id="手写"><a href="#手写" class="headerlink" title="手写"></a>手写</h4><ul>
+<li>call函数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span> (<span class="params">obj, ...args</span>) </span>&#123;</span><br><span class="line">     obj = obj || <span class="built_in">window</span></span><br><span class="line">     <span class="comment">// this此时是函数 暂时把它保存到obj对象上</span></span><br><span class="line">     obj.fn = <span class="built_in">this</span></span><br><span class="line">     <span class="comment">// 这样调用 把fn里面的this隐式绑定到obj里面</span></span><br><span class="line">     obj.fn(...args)</span><br><span class="line">     <span class="comment">// 删除多余属性</span></span><br><span class="line">     <span class="keyword">delete</span> obj.fn</span><br><span class="line">&#125;</span><br><span class="line">foo.myCall(Person, <span class="number">10</span>, <span class="number">50</span>)</span><br></pre></td></tr></table></figure>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/11/%E6%B7%A1%E5%87%BA%E6%95%88%E6%9E%9C/">展开全文 >></a>
-        </p>
-      
+<ul>
+<li>apply函数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myApply = <span class="function"><span class="keyword">function</span> (<span class="params">obj, args</span>) </span>&#123;</span><br><span class="line">    obj = obj || <span class="built_in">window</span></span><br><span class="line">    <span class="comment">// this此时是函数 暂时把它保存到obj对象上</span></span><br><span class="line">    obj.fn = <span class="built_in">this</span></span><br><span class="line">    <span class="comment">// 这样调用 把fn里面的this隐式绑定到obj里面</span></span><br><span class="line">    obj.fn(...args)</span><br><span class="line">    <span class="comment">// 删除多余属性</span></span><br><span class="line">    <span class="keyword">delete</span> obj.fn</span><br><span class="line">&#125;</span><br><span class="line">foo.myApply(Person, [<span class="number">10</span>, <span class="number">50</span>])</span><br></pre></td></tr></table></figure>
 
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+<ul>
+<li>bind函数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myBind = <span class="function"><span class="keyword">function</span>(<span class="params">obj,...arg1</span>) </span>&#123;</span><br><span class="line">    obj = obj || <span class="built_in">window</span></span><br><span class="line">    fn = <span class="built_in">this</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...arg2</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fn.call(obj,...arg1, ...arg2)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> bar =  foo.myBind(Person, <span class="number">10</span>)</span><br><span class="line">bar(<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
 
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+<blockquote>
+<p>apply, call, bind函数还有一些细节,这里只是做一个简单的实现 可以达到相同的效果,并没有对边界值进行分析</p>
+</blockquote>
 
-
-
-
-  
-    <article id="post-图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/09/%E5%9B%BE/">图</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/09/%E5%9B%BE/" class="archive-article-date">
-  	<time datetime="2021-11-09T15:17:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          <h3 id="图数据结构的封装"><a href="#图数据结构的封装" class="headerlink" title="图数据结构的封装"></a>图数据结构的封装</h3><p>一. 什么是图?</p>
-<p>在计算机科学中，一个图就是一些<em>顶点</em>的集合，这些顶点通过一系列<em>边</em>结对（连接）。顶点用圆圈表示，边就是这些圆圈之间的连线。顶点之间通过边连接。例如:</p>
-<p><img src="/2021/11/09/%E5%9B%BE/a.webp" alt="a"></p>
-         
-        
-        
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/javascript//" class="article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/09/%E5%9B%BE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每日算法-7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/09/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95-7/">每日算法</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/09/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95-7/" class="archive-article-date">
-  	<time datetime="2021-11-09T12:15:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          <p><img src="/2021/11/09/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95-7/a.jpg" alt="a"></p>
-         
-        
-        
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/09/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95-7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-今日手写-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/08/%E4%BB%8A%E6%97%A5%E6%89%8B%E5%86%99-2/">今日手写</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/08/%E4%BB%8A%E6%97%A5%E6%89%8B%E5%86%99-2/" class="archive-article-date">
-  	<time datetime="2021-11-08T11:42:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          <h3 id="发布订阅者的实现"><a href="#发布订阅者的实现" class="headerlink" title="发布订阅者的实现"></a>发布订阅者的实现</h3><p><img src="/2021/11/08/%E4%BB%8A%E6%97%A5%E6%89%8B%E5%86%99-2/a.jpg" alt="a"></p>
          
         
         
@@ -462,16 +232,75 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/08/%E4%BB%8A%E6%97%A5%E6%89%8B%E5%86%99-2/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/11/17/%E4%BB%8A%E6%97%A5%E6%89%8B%E5%86%99-3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机网络四</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -486,110 +315,33 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-webpack5自定义loader" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/07/webpack5%E8%87%AA%E5%AE%9A%E4%B9%89loader/">webpack5自定义loader</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/07/webpack5%E8%87%AA%E5%AE%9A%E4%B9%89loader/" class="archive-article-date">
-  	<time datetime="2021-11-07T07:18:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          <h3 id="webpack自定义loader"><a href="#webpack自定义loader" class="headerlink" title="webpack自定义loader"></a>webpack自定义loader</h3><ul>
-<li>loader本质就是一个函数</li>
-<li>函数接受三个参数content soucemap meta</li>
-</ul>
-<p>接下来开始搭建环境</p>
-<ul>
-<li><code>npm init -y</code> 初始化package.json</li>
-</ul>
-         
-        
-        
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">webpack5</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/webpack5//" class="article-tag-list-link color4">webpack5</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/07/webpack5%E8%87%AA%E5%AE%9A%E4%B9%89loader/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#js%E4%B8%AD%E7%9A%84%E6%94%B9%E5%8F%98this%E6%8C%87%E5%90%91%E5%87%BD%E6%95%B0-apply-bind-call"><span class="toc-number">1.</span> <span class="toc-text">js中的改变this指向函数 apply bind call</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E5%86%99"><span class="toc-number">1.1.</span> <span class="toc-text">手写</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
-    </nav>
   
 
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -611,8 +363,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
