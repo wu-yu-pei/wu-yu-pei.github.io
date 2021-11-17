@@ -21,8 +21,14 @@
 <meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/c.png">
 <meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/d.png">
 <meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/e.png">
+<meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/m.png">
+<meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/g.png">
+<meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/h.png">
+<meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/i.png">
+<meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/j.png">
+<meta property="og:image" content="http://example.com/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/k.png">
 <meta property="article:published_time" content="2021-11-16T11:33:00.000Z">
-<meta property="article:modified_time" content="2021-11-16T14:16:24.385Z">
+<meta property="article:modified_time" content="2021-11-17T14:24:51.981Z">
 <meta property="article:author" content="Growing">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
@@ -202,6 +208,56 @@
 <p>因为前两次交换了相关数据,为可靠传输提供服务  </p>
 <p>④ 真正开始发送http请求</p>
 <p><img src="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/e.png" alt="e"></p>
+<p>四次挥手</p>
+<p>偷了张图</p>
+<p><img src="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/m.png" alt="m"></p>
+<ul>
+<li><p>FIN-WAIT-1：表示想主动关闭连接</p>
+<ul>
+<li>向对方发送了FIN报文，此时进入到FIN-WAIT-1状态</li>
+</ul>
+</li>
+<li><p>CLOSE-WAIT：表示在等待关闭</p>
+<ul>
+<li><p>当对方发送FIN给自己，自己会回应一个ACK报文给对方，此时则进入到CLOSE-WAIT状态</p>
+<p>+在此状态下，需要考虑自己是否还有数据要发送给对方，如果没有，发送FIN报文给对方</p>
+</li>
+</ul>
+</li>
+<li><p>FIN-WAIT-2：只要对方发送ACK确认后，主动方就会处于FIN-WAIT-2状态，然后等待对方发送FIN报文</p>
+</li>
+<li><p>CLOSING：一种比较罕见的例外状态</p>
+<ul>
+<li>表示你发送FIN报文后，并没有收到对方的ACK报文，反而却也收到了对方的FIN报文</li>
+<li>如果双方几乎在同时准备关闭连接的话，那么就出现了双方同时发送FIN报文的情况，也即会出现CLOSING状态</li>
+<li>表示双方都正在关闭连接</li>
+</ul>
+</li>
+<li><p>LAST-ACK：被动关闭一方在发送FIN报文后，最后等待对方的ACK报文</p>
+<ul>
+<li>当收到ACK报文后，即可进入CLOSED状态了</li>
+</ul>
+</li>
+<li><p>TIME-WAIT：表示收到了对方的FIN报文，并发送出了ACK报文，就等2MSL后即可进入CLOSED状态了</p>
+<ul>
+<li>如果FIN-WAIT-1状态下，收到了对方同时带FIN标志和ACK标志的报文时可以直接进入到TIME-WAIT状态，而无须经过FIN-WAIT-2状态</li>
+</ul>
+</li>
+<li><p>CLOSED：关闭状态</p>
+</li>
+<li><p>由于有些状态的时间比较短暂，所以很难用netstat命令看到，比如SYN-RCVD、FIN-WAIT-1等</p>
+</li>
+</ul>
+<p>抓包分析</p>
+<p>预览:</p>
+<p><img src="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/g.png" alt="e"></p>
+<p>① </p>
+<p><img src="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/h.png" alt="e"></p>
+<p>②</p>
+<p><img src="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/i.png" alt="i"></p>
+<p>③</p>
+<p><img src="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/j.png" alt="j"></p>
+<p><img src="/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9B%9B/k.png" alt="k"></p>
 
          
         
