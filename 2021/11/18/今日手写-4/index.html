@@ -16,7 +16,7 @@
 <meta property="og:description" content="的几种高级方法js原生方法的实现今天来实现实现..  (～￣▽￣)～ 一口气写完了 哈哈哈 12&#x2F;&#x2F; 测试数组var ages &#x3D; [1, 3, 56, 20, 32, 10, 1, 2, 20, 1, 20]">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-18T08:26:03.000Z">
-<meta property="article:modified_time" content="2021-11-19T12:31:23.376Z">
+<meta property="article:modified_time" content="2021-11-20T06:34:07.847Z">
 <meta property="article:author" content="Growing">
 <meta property="article:tag" content="手写">
 <meta name="twitter:card" content="summary">
@@ -274,13 +274,19 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.wy_is = <span class="function"><span class="keyword">function</span> (<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">if</span> (x === y) &#123;</span><br><span class="line">               <span class="comment">// 防止 -0 和 +0</span></span><br><span class="line">               <span class="keyword">return</span> x !== <span class="number">0</span> || <span class="number">1</span> / x === <span class="number">1</span> / y</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           <span class="comment">// 防止NaN</span></span><br><span class="line">           <span class="keyword">return</span> x !== x &amp;&amp; y !== y</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">let</span> person = &#123; <span class="attr">name</span>: <span class="string">&quot;wuyupei&quot;</span> &#125;</span><br><span class="line">       <span class="keyword">let</span> student = person</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">Object</span>.wy_is(<span class="literal">NaN</span>, <span class="literal">NaN</span>));</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>assign</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.wy_assign = <span class="function"><span class="keyword">function</span> (<span class="params">target, ...args</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">if</span> (target === <span class="literal">null</span> || target === <span class="literal">undefined</span>) &#123;</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">&#x27;Cannot convert undefined or null to object&#x27;</span>)</span><br><span class="line">           &#125;</span><br><span class="line">           target = <span class="built_in">Object</span>(target)</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">let</span> nextobj <span class="keyword">of</span> args) &#123;</span><br><span class="line">               <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> nextobj) &#123;</span><br><span class="line">                   nextobj.hasOwnProperty(key) &amp;&amp; (target[key] = nextobj[key])</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">return</span> target</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">const</span> obj1 = &#123; <span class="attr">name</span>: <span class="string">&quot;wuyupei&quot;</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;</span><br><span class="line">       <span class="keyword">const</span> obj2 = &#123; <span class="attr">name</span>: <span class="string">&quot;zhangsan&quot;</span>, <span class="attr">friend</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>] &#125;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">Object</span>.wy_assign(obj1, obj2));</span><br></pre></td></tr></table></figure>
+
+
+
 <p>funtion:(之前已经实现过)</p>
 <ul>
 <li> call</li>
 <li>bind</li>
 <li>apply</li>
 </ul>
-<p>over~</p>
 
          
         
