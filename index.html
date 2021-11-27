@@ -152,6 +152,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vue-mvvm-第一篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/27/vue-mvvm-%E7%AC%AC%E4%B8%80%E7%AF%87/">vue-mvvm(第一篇)</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/27/vue-mvvm-%E7%AC%AC%E4%B8%80%E7%AF%87/" class="archive-article-date">
+  	<time datetime="2021-11-27T12:50:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          <h3 id="学习vue源码之——————–-gt-MVMV-一"><a href="#学习vue源码之——————–-gt-MVMV-一" class="headerlink" title="学习vue源码之——————–&gt;MVMV(一)"></a>学习vue源码之——————–&gt;MVMV(一)</h3><p>最近对vue的mvvm很感兴趣,于是乎 在B站学习了一丢丢 动手实践了一下下~~</p>
+<p>本篇主要实现的Complire</p>
+<p>整体思路:</p>
+<ul>
+<li>new Vue(optiones) 传入options</li>
+<li>Complire编译html中使用的指令和mastach语法</li>
+<li>为了减少重绘和回流 先创建文档片段<code>document.createDocumentFragment</code>进行dom操作</li>
+<li>利用正则解析mastach语法</li>
+<li>针对不同的element使用不同的额处理(textnode,elementnode)</li>
+<li>从传入的option.data中取数据,赋值</li>
+</ul>
+         
+        
+        
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/27/vue-mvvm-%E7%AC%AC%E4%B8%80%E7%AF%87/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Promise-Class版" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -504,100 +598,9 @@
 
 
   
-    <article id="post-http协议" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/19/http%E5%8D%8F%E8%AE%AE/">http协议</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/19/http%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
-  	<time datetime="2021-11-19T05:15:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          <blockquote>
-<p>HTTP（Hyper Text Transfer Protocol），译为超文本传输协议</p>
-</blockquote>
-<ul>
-<li>是互联网中应用最广泛的应用层协议之一</li>
-<li>设计HTTP最初的目的是：提供一种发布和接收HTML页面的方法，由URI来标识具体的资源</li>
-<li>后面用HTTP来传递的数据格式不仅仅是HTML，应用非常广泛</li>
-</ul>
-         
-        
-        
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/19/http%E5%8D%8F%E8%AE%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
     </nav>
   
 
